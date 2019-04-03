@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author thomaslapierre
+ *
+ */
+module projetPetitChevauxJava {
+}
