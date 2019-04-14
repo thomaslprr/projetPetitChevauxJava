@@ -18,10 +18,12 @@ public class Case {
 	}
 
 	public boolean peutPasser(Pion pion) {
+		return false;
 		
 	}
 	
 	public boolean peutSArreter(Pion pion) {
+		return false;
 		
 	}
 	
