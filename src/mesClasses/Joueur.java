@@ -1,5 +1,7 @@
 package mesClasses;
 
+import java.util.ArrayList;
+
 public class Joueur {
 	
 	private String nomJoueur;
@@ -31,7 +33,10 @@ public class Joueur {
 		this.caseJoueur = caseJoueur;
 	}
 
-	
+	public ArrayList<Pion> getChevaux() {
+		
+		return null;
+	}
 	
 	
 	
