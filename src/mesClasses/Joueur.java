@@ -9,7 +9,8 @@ public class Joueur {
 	private Couleur couleurJoueur;
 	
 	public Joueur(String nom, Couleur cou) {
-		
+		nomJoueur=nom;
+		couleurJoueur=cou;
 	}
 
 	public Couleur getCouleur() {
