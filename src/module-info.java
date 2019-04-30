@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author thomaslapierre
+ * @author Thomas Lapierre
  *
  */
 module projetPetitChevauxJava {
