@@ -1,7 +1,11 @@
 package mesClasses;
 
 import java.util.ArrayList;
-
+/**
+ * Classe Joueur
+ * @author Thomas Lapierre
+ *
+ */
 public class Joueur {
 	
 	private String nomJoueur;

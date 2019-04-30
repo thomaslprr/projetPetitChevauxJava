@@ -1,5 +1,10 @@
 package mesClasses;
 
+/**
+ * Classe Pion 
+ * @author Thomas Lapierre
+ *
+ */
 public class Pion {
 	
 	private String id;

@@ -1,5 +1,9 @@
 package mesClasses;
-
+/**
+ *  Classe Case Colorée 
+ * @author thomaslapierre
+ * Cette classe hérite de Case
+ */
 public class CaseColoree extends Case {
 
 	private Couleur couleur;

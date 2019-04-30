@@ -2,7 +2,13 @@ package mesClasses;
 
 import java.util.ArrayList;
 
+/**
+ * Classe Case
+ * @author Thomas Lapierre
+ */
+
 public class Case {
+
 
 	public Case() {
 		
