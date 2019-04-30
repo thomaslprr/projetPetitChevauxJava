@@ -1,4 +1,7 @@
 package mesClasses;
+
+import mesEnum.Couleur;
+
 /**
  *  Classe pour les cases d'écurie. 
  *  Cette classe hérite de CaseColorée

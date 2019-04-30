@@ -1,5 +1,7 @@
 package mesClasses;
 
+import mesEnum.Couleur;
+
 /**
  *  Classe pour les cases d'échelle
  * @author thomaslapierre

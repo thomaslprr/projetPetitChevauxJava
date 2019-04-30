@@ -1,4 +1,4 @@
-package mesClasses;
+package mesEnum;
 /**
  * Enumération des 4 couleurs possibles pour les pions et les cases.
  * @author thomaslapierre

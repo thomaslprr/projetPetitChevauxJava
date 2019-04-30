@@ -1,6 +1,8 @@
 package mesClasses;
 
 import java.util.ArrayList;
+
+import mesEnum.Couleur;
 /**
  * Classe Joueur
  * @author Thomas Lapierre

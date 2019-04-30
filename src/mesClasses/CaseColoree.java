@@ -1,4 +1,7 @@
 package mesClasses;
+
+import mesEnum.Couleur;
+
 /**
  *  Classe Case Colorée 
  * @author thomaslapierre

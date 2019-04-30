@@ -1,5 +1,7 @@
 package mesClasses;
 
+import mesEnum.Couleur;
+
 /**
  * Classe Pion 
  * @author Thomas Lapierre
