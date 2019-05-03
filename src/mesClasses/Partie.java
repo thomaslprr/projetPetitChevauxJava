@@ -11,8 +11,8 @@ public class Partie  {
 	private int de;
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	
-	public Partie() {
-		
+	public Partie(int val) throws PasDeJoueursException {
+		initialiserJoueurs(val);
 	}
 	
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
