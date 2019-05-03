@@ -19,10 +19,10 @@ public abstract class Joueur {
 	public Joueur(String nom, Couleur cou) {
 		nomJoueur=nom;
 		couleurJoueur=cou;
-		this.ajouterChevaux(new Pion("1",cou));
-		this.ajouterChevaux(new Pion("2",cou));
-		this.ajouterChevaux(new Pion("3",cou));
-		this.ajouterChevaux(new Pion("4",cou));
+		this.ajouterPion(new Pion("1",cou));
+		this.ajouterPion(new Pion("2",cou));
+		this.ajouterPion(new Pion("3",cou));
+		this.ajouterPion(new Pion("4",cou));
 	}
 
 	public Couleur getCouleur() {
@@ -50,7 +50,7 @@ public abstract class Joueur {
 		return pions;
 	}
 	
-	public void ajouterChevaux(Pion pion) {
+	public void ajouterPion(Pion pion) {
 		pions.add(pion);
 	}
 	
