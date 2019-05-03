@@ -4,10 +4,35 @@ import java.util.ArrayList;
 
 public class Plateau {
 
-	ArrayList<ArrayList<CaseDEchelle>> echelles ;
+	private ArrayList<ArrayList<CaseDEchelle>> echelles ;
 	
 	public Plateau() {
-		// TODO Auto-generated constructor stub
+		
+	}
+	
+	
+	
+	public ArrayList<ArrayList<CaseDEchelle>> getEchelles() {
+		return echelles;
+	}
+
+	public ArrayList<CaseEcurie> getEcuries(){
+		return null;
+	}
+	
+	public ArrayList<CaseDeChemin> getChemin(){
+		
+		return null;
+	}
+
+
+	public void afficher() {
+		
+	}
+	
+	public void deplacerPionA(Pion p, Case c) {
+		
+		
 	}
 
 }
