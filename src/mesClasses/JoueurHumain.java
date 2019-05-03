@@ -1,5 +1,7 @@
 package mesClasses;
 
+import java.util.ArrayList;
+
 import mesEnum.Couleur;
 
 /**
@@ -10,9 +12,6 @@ import mesEnum.Couleur;
  */
 public class JoueurHumain extends Joueur {
 
-	public JoueurHumain() {
-		super();
-	}
 	
 	public JoueurHumain(String nom, Couleur cou) {
 		super(nom,cou);

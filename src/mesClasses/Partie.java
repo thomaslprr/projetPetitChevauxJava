@@ -33,7 +33,7 @@ public class Partie  {
 			for(int i = 0; i < nbreJoueur; i++) {  
 				
 				
-				System.out.println("Qu'elle est le nom du joueur "+(i+1));
+				System.out.println("Quel est le nom du joueur "+(i+1));
 				nomChoisi = sc.nextLine();
 				
 				
@@ -61,12 +61,19 @@ public class Partie  {
 				
 					
 				joueurs.add(new JoueurHumain(nomChoisi ,couleurChoisi));
+				
 				sc.nextLine();
 			}
 			
 			sc.close();
+			
+			
 		
 		}
+		
+		
+		
+		
 	}
 	
 	public void initialiserPlateau() {

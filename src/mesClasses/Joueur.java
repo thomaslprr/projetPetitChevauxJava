@@ -13,17 +13,16 @@ public abstract class Joueur {
 	private String nomJoueur;
 	private Case caseJoueur;
 	private Couleur couleurJoueur;
-	private ArrayList<Pion> chevaux;
+	private ArrayList<Pion> pions;
 	
-	public Joueur() {
-		nomJoueur=null;
-		couleurJoueur= null;
-		caseJoueur=null;
-	}
 	
 	public Joueur(String nom, Couleur cou) {
 		nomJoueur=nom;
 		couleurJoueur=cou;
+		this.ajouterChevaux(new Pion("1",cou));
+		this.ajouterChevaux(new Pion("2",cou));
+		this.ajouterChevaux(new Pion("3",cou));
+		this.ajouterChevaux(new Pion("4",cou));
 	}
 
 	public Couleur getCouleur() {
@@ -47,8 +46,12 @@ public abstract class Joueur {
 		this.caseJoueur = caseJoueur;
 	}
 
-	public ArrayList<Pion> getChevaux() {
-		return chevaux;
+	public ArrayList<Pion> getPions() {
+		return pions;
+	}
+	
+	public void ajouterChevaux(Pion pion) {
+		pions.add(pion);
 	}
 	
 	public abstract Pion choisirPion(int num, Plateau pla);
