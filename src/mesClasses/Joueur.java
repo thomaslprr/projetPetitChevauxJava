@@ -8,11 +8,18 @@ import mesEnum.Couleur;
  * @author Thomas Lapierre
  *
  */
-public class Joueur {
+public abstract class Joueur {
 	
 	private String nomJoueur;
 	private Case caseJoueur;
 	private Couleur couleurJoueur;
+	private ArrayList<Pion> chevaux;
+	
+	public Joueur() {
+		nomJoueur=null;
+		couleurJoueur= null;
+		caseJoueur=null;
+	}
 	
 	public Joueur(String nom, Couleur cou) {
 		nomJoueur=nom;
@@ -41,14 +48,10 @@ public class Joueur {
 	}
 
 	public ArrayList<Pion> getChevaux() {
-		
-		return null;
+		return chevaux;
 	}
 	
-	public Pion choisirPion(int num, Plateau pla) {
-		
-		return null;
-	}
+	public abstract Pion choisirPion(int num, Plateau pla);
 	
 	
 	

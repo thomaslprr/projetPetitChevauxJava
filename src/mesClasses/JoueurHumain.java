@@ -10,7 +10,17 @@ import mesEnum.Couleur;
  */
 public class JoueurHumain extends Joueur {
 
+	public JoueurHumain() {
+		super();
+	}
+	
 	public JoueurHumain(String nom, Couleur cou) {
 		super(nom,cou);
+	}
+
+	@Override
+	public Pion choisirPion(int num, Plateau pla) {
+		
+		return null;
 	}
 }

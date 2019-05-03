@@ -1,23 +1,80 @@
 package mesClasses;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-public class Partie {
+import mesEnum.Couleur;
+import mesExceptions.PasDeJoueursException;
+
+public class Partie  {
 	private int de;
+	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
+	
 	public Partie() {
 		
 	}
 	
-	public void initialiserJoueurs(int numJoueur) {
+	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
+		if(nbreJoueur == 0) {
+			throw new PasDeJoueursException();
+		}else {
+			
 		
+			Scanner sc = new Scanner(System.in);
+			String nomChoisi;
+			Couleur couleurChoisi;
+			ArrayList<Couleur> couleursDisponible = new ArrayList<Couleur>();
+			couleursDisponible.add(Couleur.BLEU);
+			couleursDisponible.add(Couleur.JAUNE);
+			couleursDisponible.add(Couleur.ROUGE);
+			couleursDisponible.add(Couleur.VERT);
+			
+			for(int i = 0; i < nbreJoueur; i++) {  
+				
+				
+				System.out.println("Qu'elle est le nom du joueur "+(i+1));
+				nomChoisi = sc.nextLine();
+				
+				
+				int rep=-10;
+				
+				while(rep < 0 || rep > couleursDisponible.size()) { 
+					
+					System.out.println("Choissisez une des couleurs suivantes : ");
+					for(int j = 0; j < couleursDisponible.size(); j++) {
+						System.out.println(j+"]  "+couleursDisponible.get(j));
+					}
+					
+					
+					try {
+						rep = sc.nextInt();
+					}catch (InputMismatchException exception) { 
+					    System.out.println("Mauvaise entrée");
+					    sc.next();
+					    rep = -1;
+					}
+				}
+				
+				couleurChoisi = couleursDisponible.get(rep);
+				couleursDisponible.remove(rep);
+				
+					
+				joueurs.add(new JoueurHumain(nomChoisi ,couleurChoisi));
+				sc.nextLine();
+			}
+			
+			sc.close();
+		
+		}
 	}
 	
 	public void initialiserPlateau() {
-		
+		Plateau p = new Plateau();
 	}
 	
 	public int lanceDe() {
-		int de = (int)(Math.random() * 5);
+		this.de = (int)(Math.random() * 5);
 		return de;
 	}
 	

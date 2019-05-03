@@ -12,8 +12,8 @@ public class Pion {
 	private String id;
 	private Couleur couleur;
 	
-	public Pion(String nom, Couleur couleur) {
-		id=nom;
+	public Pion(String id, Couleur couleur) {
+		this.id=id;
 		this.couleur= couleur;
 	}
 
