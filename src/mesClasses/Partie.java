@@ -17,9 +17,8 @@ public class Partie {
 	}
 	
 	public int lanceDe() {
-		n = (int)(Math.random() * 5);
-		int a = 0;
-		return a;
+		int de = (int)(Math.random() * 5);
+		return de;
 	}
 	
 	public void jouerUnTour() {

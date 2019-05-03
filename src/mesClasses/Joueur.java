@@ -47,7 +47,7 @@ public class Joueur {
 	
 	public Pion choisirPion(int num, Plateau pla) {
 		
-		return Pion;
+		return null;
 	}
 	
 	
