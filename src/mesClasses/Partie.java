@@ -96,7 +96,7 @@ public class Partie  {
 	
 	public Joueur getJoueurCourrant() {
 		
-		return Joueur;
+		return null;
 	}
 	
 	public void setJoueurCourrant(Joueur j) {
@@ -104,7 +104,7 @@ public class Partie  {
 	}
 	
 	public Plateau getPlateau() {
-		return Plateau;
+		return null;
 	}
 	
 	public ArrayList<Joueur> getJoueur(){
