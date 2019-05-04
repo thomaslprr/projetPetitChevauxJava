@@ -2,6 +2,8 @@ package mesClasses;
 
 import java.util.ArrayList;
 
+import mesEnum.Couleur;
+
 public class Plateau {
 
 	private ArrayList<ArrayList<CaseDEchelle>> echelles ;
@@ -12,7 +14,12 @@ public class Plateau {
 		 for(int i=0; i<caseChemin.length; i++) {
                  caseChemin[i]=new CaseDeChemin();
              }
-		
+		CaseEcurie c4 = new CaseEcurie(Couleur.JAUNE);
+		CaseEcurie c3 = new CaseEcurie(Couleur.BLEU);
+		CaseEcurie c2 = new CaseEcurie(Couleur.ROUGE);
+		CaseEcurie c1 = new CaseEcurie(Couleur.VERT);
+	
+		 
 	}
 	
 	
