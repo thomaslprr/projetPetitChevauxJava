@@ -5,9 +5,16 @@ package mesClasses;
  *
  */
 public class CaseDeChemin extends Case {
+	private static int compteurCaseChemin = 1 ;
+	private int numeroCase ; 
 	
 	public CaseDeChemin() {
-		
+		numeroCase=compteurCaseChemin;
+		compteurCaseChemin++;
+	}
+	
+	public int getNumeroCase() {
+		return numeroCase;
 	}
 
 	@Override

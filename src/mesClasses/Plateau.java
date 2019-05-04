@@ -7,6 +7,8 @@ public class Plateau {
 	private ArrayList<ArrayList<CaseDEchelle>> echelles ;
 	
 	public Plateau() {
+		CaseDeChemin caseChemin[] = new CaseDeChemin[56]; //case principale
+		
 		
 	}
 	

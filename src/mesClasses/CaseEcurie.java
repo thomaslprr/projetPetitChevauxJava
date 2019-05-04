@@ -9,9 +9,20 @@ import mesEnum.Couleur;
  *
  */
 public class CaseEcurie extends CaseColoree {
-
 	public CaseEcurie(Couleur cou) {
 		super(cou);
+	}
+
+	@Override
+	public boolean peutPasser(Pion pion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean peutSArreter(Pion pion) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

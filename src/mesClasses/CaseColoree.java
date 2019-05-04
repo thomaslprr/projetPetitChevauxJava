@@ -8,8 +8,8 @@ import mesEnum.Couleur;
  * Cette classe hérite de Case
  */
 public abstract class CaseColoree extends Case {
-
 	private Couleur couleur;
+	
 	
 	public CaseColoree(Couleur couleur) {
 		this.couleur=couleur;

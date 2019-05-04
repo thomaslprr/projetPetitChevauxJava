@@ -9,12 +9,10 @@ import java.util.ArrayList;
 
 public abstract class Case {
 	private ArrayList<Pion> pionCase = new ArrayList<Pion>();
-	private static int compteurCase = 1 ;
-	private int numeroCase ; 
+	private static int nombreCaseTotale = 0;
 	
 	public Case() {
-		numeroCase=compteurCase;
-		compteurCase++;
+		this.nombreCaseTotale++;
 		pionCase.clear();
 	}
 	
@@ -27,9 +25,10 @@ public abstract class Case {
 		pionCase.add(pion);
 	}
 
-	public int getCaseJoueur() {
-		return numeroCase;
+	public int getCaseTotale() {
+		return nombreCaseTotale;
 	}
+	
 	
 	public abstract boolean peutPasser(Pion pion);
 	
