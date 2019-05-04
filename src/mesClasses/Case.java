@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Thomas Lapierre
  */
 
-public class Case {
+public abstract class Case {
 
 
 	public Case() {
@@ -23,14 +23,8 @@ public class Case {
 		
 	}
 
-	public boolean peutPasser(Pion pion) {
-		return false;
-		
-	}
+	public abstract boolean peutPasser(Pion pion);
 	
-	public boolean peutSArreter(Pion pion) {
-		return false;
-		
-	}
-	
+	public abstract boolean peutSArreter(Pion pion);
+
 }

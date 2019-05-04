@@ -13,4 +13,16 @@ public class CaseDEchelle extends CaseColoree {
 		super(cou);
 	}
 
+	@Override
+	public boolean peutPasser(Pion pion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean peutSArreter(Pion pion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -7,7 +7,7 @@ import mesEnum.Couleur;
  * @author thomaslapierre
  * Cette classe hérite de Case
  */
-public class CaseColoree extends Case {
+public abstract class CaseColoree extends Case {
 
 	private Couleur couleur;
 	

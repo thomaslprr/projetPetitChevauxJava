@@ -10,4 +10,16 @@ public class CaseDeChemin extends Case {
 		
 	}
 
+	@Override
+	public boolean peutPasser(Pion pion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean peutSArreter(Pion pion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
