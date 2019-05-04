@@ -6,35 +6,69 @@ import mesEnum.Couleur;
 
 public class Plateau {
 
-	private ArrayList<ArrayList<CaseDEchelle>> echelles ;
-	private final CaseDeChemin[] caseChemin;
+	private ArrayList<ArrayList<CaseDEchelle>> listeEchelles ;
+	private ArrayList<CaseDeChemin> caseChemin;
+	private ArrayList<CaseDEchelle> echelleRouge;
+	private ArrayList<CaseDEchelle> echelleJaune;
+	private ArrayList<CaseDEchelle> echelleBleu;
+	private ArrayList<CaseDEchelle> echelleVert;
+	private ArrayList<CaseEcurie> ecuries;
 	
 	public Plateau() {
-		caseChemin = new CaseDeChemin[56]; //case principale
-		 for(int i=0; i<caseChemin.length; i++) {
-                 caseChemin[i]=new CaseDeChemin();
+		
+		 for(int i=0; i<56; i++) {
+                 caseChemin.add(new CaseDeChemin());
              }
-		CaseEcurie c4 = new CaseEcurie(Couleur.JAUNE);
-		CaseEcurie c3 = new CaseEcurie(Couleur.BLEU);
-		CaseEcurie c2 = new CaseEcurie(Couleur.ROUGE);
-		CaseEcurie c1 = new CaseEcurie(Couleur.VERT);
-	
+		 
+		
+		ecuries.add(new CaseEcurie(Couleur.JAUNE));
+		ecuries.add(new CaseEcurie(Couleur.ROUGE));
+		ecuries.add(new CaseEcurie(Couleur.VERT));
+		ecuries.add(new CaseEcurie(Couleur.BLEU));
+		
+		
+		
+		for(int i=0;i<6;i++) {
+			echelleRouge.add(new CaseDEchelle(Couleur.ROUGE));
+		}
+		
+		
+		for(int i=0;i<6;i++) {
+			echelleJaune.add(new CaseDEchelle(Couleur.JAUNE));
+		}
+		
+		
+		for(int i=0;i<6;i++) {
+			echelleBleu.add(new CaseDEchelle(Couleur.BLEU));
+		}
+		
+		
+		for(int i=0;i<6;i++) {
+			echelleVert.add(new CaseDEchelle(Couleur.VERT));
+		}
+		
+		listeEchelles.add(echelleBleu);
+		listeEchelles.add(echelleVert);
+		listeEchelles.add(echelleJaune);
+		listeEchelles.add(echelleRouge);
+		
+		
 		 
 	}
 	
 	
 	
 	public ArrayList<ArrayList<CaseDEchelle>> getEchelles() {
-		return echelles;
+		return listeEchelles;
 	}
 
 	public ArrayList<CaseEcurie> getEcuries(){
-		return null;
+		return ecuries;
 	}
 	
 	public ArrayList<CaseDeChemin> getChemin(){
 		
-		return null;
+		return caseChemin;
 	}
 
 

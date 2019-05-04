@@ -17,6 +17,7 @@ public class Partie  {
 		for(int i=1;i<=4;i++) {
 			initialiserJoueurs(i);
 		}
+		initialiserPlateau();
 	}
 	
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
