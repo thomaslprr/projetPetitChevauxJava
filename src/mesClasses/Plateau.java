@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Plateau {
 
 	private ArrayList<ArrayList<CaseDEchelle>> echelles ;
+	private final CaseDeChemin[] caseChemin;
 	
 	public Plateau() {
-		CaseDeChemin caseChemin[] = new CaseDeChemin[56]; //case principale
+		caseChemin = new CaseDeChemin[56]; //case principale
 		 for(int i=0; i<caseChemin.length; i++) {
                  caseChemin[i]=new CaseDeChemin();
              }
