@@ -11,8 +11,12 @@ public class Partie  {
 	private int de;
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	
-	public Partie(int val) throws PasDeJoueursException {
-		initialiserJoueurs(val);
+	public Partie() throws PasDeJoueursException  {
+		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
+		System.out.println("Vous venez de lancer une partie, bonne partie.");
+		for(int i=1;i<=4;i++) {
+			initialiserJoueurs(i);
+		}
 	}
 	
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
