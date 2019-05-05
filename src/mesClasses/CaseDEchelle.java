@@ -21,6 +21,10 @@ public class CaseDEchelle extends CaseColoree {
 			compteurCaseDEchelle++;
 		}
 	}
+	
+	public int getNumeroCaseEchelle() {
+		return numero;
+	}
 
 	@Override
 	public boolean peutPasser(Pion pion) {

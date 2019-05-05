@@ -13,7 +13,7 @@ public class CaseDeChemin extends Case {
 		compteurCaseChemin++;
 	}
 	
-	public int getNumeroCase() {
+	public int getNumeroCaseChemin() {
 		return numeroCase;
 	}
 

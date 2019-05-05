@@ -12,7 +12,7 @@ public abstract class Case {
 	private static int nombreCaseTotale = 0;
 	
 	public Case() {
-		this.nombreCaseTotale++;
+		Case.nombreCaseTotale++;
 		pionCase.clear();
 	}
 	
