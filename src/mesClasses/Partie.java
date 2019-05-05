@@ -10,6 +10,7 @@ import mesExceptions.PasDeJoueursException;
 public class Partie  {
 	private int de;
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
+	private Plateau p;
 	
 	public Partie() throws PasDeJoueursException  {
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
@@ -82,7 +83,7 @@ public class Partie  {
 	}
 	
 	public void initialiserPlateau() {
-		Plateau p = new Plateau();
+		p = new Plateau();
 	}
 	
 	public int lanceDe() {
@@ -109,11 +110,11 @@ public class Partie  {
 	}
 	
 	public Plateau getPlateau() {
-		return null;
+		return p;
 	}
 	
-	public ArrayList<Joueur> getJoueur(){
-		return null;
+	public ArrayList<JoueurHumain> getJoueur(){
+		return joueurs;
 	}
 	
 	public void mangerLesPions(Case c) {
