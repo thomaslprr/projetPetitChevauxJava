@@ -11,7 +11,7 @@ import mesEnum.Couleur;
 public abstract class Joueur {
 	
 	private String nomJoueur;
-	private Case caseJoueur;
+	private Case caseJoueurDepart;
 	private Couleur couleurJoueur;
 	private ArrayList<Pion> pions;
 	
@@ -39,11 +39,11 @@ public abstract class Joueur {
 	}
 
 	public Case getCaseDeDepart() {
-		return caseJoueur;
+		return caseJoueurDepart;
 	}
 
 	public void setCaseDeDepart(Case caseJoueur) {
-		this.caseJoueur = caseJoueur;
+		this.caseJoueurDepart = caseJoueur;
 	}
 
 	public ArrayList<Pion> getPions() {
@@ -52,6 +52,10 @@ public abstract class Joueur {
 	
 	public void ajouterPion(Pion pion) {
 		pions.add(pion);
+	}
+	
+	public boolean aFini() {
+		return false;
 	}
 	
 	public abstract Pion choisirPion(int num, Plateau pla);

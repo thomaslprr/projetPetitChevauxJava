@@ -98,6 +98,7 @@ public class Partie  {
 	public boolean estPartieTermine() {
 		return false;
 		
+		
 	}
 	
 	public Joueur getJoueurCourrant() {
