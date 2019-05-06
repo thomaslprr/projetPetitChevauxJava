@@ -11,6 +11,7 @@ public class Partie  {
 	private int de;
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	private Plateau p;
+	private Joueur joueurCourant;
 	
 	public Partie() throws PasDeJoueursException  {
 		Scanner sc = new Scanner(System.in);
@@ -27,6 +28,7 @@ public class Partie  {
 			    sc.next();
 			    reponse = -1;
 			}
+			sc.close();
 		}
 		
 		initialiserJoueurs(reponse);
@@ -116,11 +118,11 @@ public class Partie  {
 	
 	public Joueur getJoueurCourrant() {
 		
-		return null;
+		return joueurCourant;
 	}
 	
 	public void setJoueurCourrant(Joueur j) {
-		
+		this.joueurCourant = j;
 	}
 	
 	public Plateau getPlateau() {
