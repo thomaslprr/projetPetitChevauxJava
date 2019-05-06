@@ -86,7 +86,9 @@ public class Partie  {
 			}
 			
 			sc.close();
-			
+			for(Joueur jh : joueurs) {
+				System.out.println(jh.getNom() + " a pour couleur "+ jh.getCouleur());
+			}
 			
 		
 		}
