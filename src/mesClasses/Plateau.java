@@ -78,7 +78,19 @@ public class Plateau {
 	
 	public void deplacerPionA(Pion p, Case c) {
 		
+		for(CaseDeChemin cc : caseChemin) {
+			for(Pion pion : cc.getChevaux()) {
+				if(pion==p) {
+					cc.retirerCheval(p);
+				}
+			}
+		}
 		
+		
+		
+		
+		
+		c.ajouteCheval(p);
 	}
 
 }

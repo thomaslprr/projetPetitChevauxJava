@@ -135,5 +135,12 @@ public class Partie  {
 	
 	public void mangerLesPions(Case c) {
 		
+		
+		
+		
+		
+		
+		
+		
 	}
 }

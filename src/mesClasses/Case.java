@@ -24,6 +24,10 @@ public abstract class Case {
 	public void ajouteCheval(Pion pion) {
 		pionCase.add(pion);
 	}
+	
+	public void retirerCheval(Pion pion) {
+		pionCase.remove(pion);
+	}
 
 	public int getCaseTotale() {
 		return nombreCaseTotale;
