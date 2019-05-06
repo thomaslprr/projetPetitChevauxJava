@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import mesEnum.Couleur;
 
 public class Plateau {
-
+	/**
+	 * Déclaration et création des différentes ArrayList
+	 */
 	private ArrayList<ArrayList<CaseDEchelle>> listeEchelles = new ArrayList<ArrayList<CaseDEchelle>>();
 	private ArrayList<CaseDeChemin> caseChemin = new ArrayList<CaseDeChemin>();
 	private ArrayList<CaseDEchelle> echelleRouge = new ArrayList<CaseDEchelle>();
@@ -14,19 +16,32 @@ public class Plateau {
 	private ArrayList<CaseDEchelle> echelleVert = new ArrayList<CaseDEchelle>() ;
 	private ArrayList<CaseEcurie> ecuries = new ArrayList<CaseEcurie>();
 	
+	/**
+	 * Constructeur de la classe Plateau.
+	 * Il permet de créer les 4 écuries,
+	 * les 56 cases de chemins et les 4 échelles propre à chaque joueur.
+	 */
+	
 	public Plateau() {
 		
+		/**
+		 * Création des 56 cases de chemins
+		 */
 		 for(int i=0; i<56; i++) {
-                 caseChemin.add(new CaseDeChemin());
-             }
+			 caseChemin.add(new CaseDeChemin());
+         }
 		 
-		
+		/**
+		 * Création des 4 écuries que l'on ajoute à la liste des écuries
+		 */
 		ecuries.add(new CaseEcurie(Couleur.JAUNE));
 		ecuries.add(new CaseEcurie(Couleur.ROUGE));
 		ecuries.add(new CaseEcurie(Couleur.VERT));
 		ecuries.add(new CaseEcurie(Couleur.BLEU));
 		
-		
+		/**
+		 * création des 6 cases d'échelles que l'on regroupe ensemble pour former une échelle d'une couleur spécifique
+		 */
 		
 		for(int i=0;i<6;i++) {
 			echelleRouge.add(new CaseDEchelle(Couleur.ROUGE));
@@ -47,6 +62,9 @@ public class Plateau {
 			echelleVert.add(new CaseDEchelle(Couleur.VERT));
 		}
 		
+		/**
+		 * ajout des 4 échelles de couleurs différentes dans une liste échelle
+		 */
 		listeEchelles.add(echelleBleu);
 		listeEchelles.add(echelleVert);
 		listeEchelles.add(echelleJaune);
@@ -56,7 +74,10 @@ public class Plateau {
 		 
 	}
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	
 	public ArrayList<ArrayList<CaseDEchelle>> getEchelles() {
 		return listeEchelles;
