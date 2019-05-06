@@ -13,9 +13,13 @@ public class Partie  {
 	private Plateau p;
 	
 	public Partie() throws PasDeJoueursException  {
+		Scanner sc = new Scanner(System.in);
+		int reponse;
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
 		System.out.println("Vous venez de lancer une partie, bonne partie.");
-		for(int i=1;i<=4;i++) {
+		System.out.println("Combien voulez-vous de joueur(s) ?");
+		reponse = sc.nextInt() ;
+		for(int i=1;i<=reponse;i++) {
 			initialiserJoueurs(i);
 		}
 		initialiserPlateau();
