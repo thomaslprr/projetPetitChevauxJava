@@ -74,10 +74,7 @@ public class Plateau {
 		 
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+	
 	
 	public ArrayList<ArrayList<CaseDEchelle>> getEchelles() {
 		return listeEchelles;

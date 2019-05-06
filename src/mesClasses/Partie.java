@@ -28,7 +28,6 @@ public class Partie  {
 			    sc.next();
 			    reponse = -1;
 			}
-			sc.close();
 		}
 		
 		initialiserJoueurs(reponse);
@@ -54,13 +53,13 @@ public class Partie  {
 			for(int i = 0; i < nbreJoueur; i++) {  
 				
 				
-				System.out.println("Quel est le nom du joueur "+(i+1));
+				System.out.println("Quel est le prénom du joueur "+(i+1));
 				nomChoisi = sc.nextLine();
 				
 				
 				int rep=-10;
 				
-				while(rep < 0 || rep > couleursDisponible.size()) { 
+				while(rep < 0 || rep >= couleursDisponible.size()) { 
 					
 					System.out.println("Choissisez une des couleurs suivantes : ");
 					for(int j = 0; j < couleursDisponible.size(); j++) {
