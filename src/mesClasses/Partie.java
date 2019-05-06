@@ -14,14 +14,23 @@ public class Partie  {
 	
 	public Partie() throws PasDeJoueursException  {
 		Scanner sc = new Scanner(System.in);
-		int reponse;
+		int reponse=-1;
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
 		System.out.println("Vous venez de lancer une partie, bonne partie.");
-		System.out.println("Combien voulez-vous de joueur(s) ?");
-		reponse = sc.nextInt() ;
-		for(int i=1;i<=reponse;i++) {
-			initialiserJoueurs(i);
+		
+		while(reponse <= 0 || reponse > 4) {
+			System.out.println("Combien voulez-vous de joueur(s) ?");
+			try {
+				reponse = sc.nextInt();
+			}catch (InputMismatchException exception) { 
+			    System.out.println("Mauvaise entrée");
+			    sc.next();
+			    reponse = -1;
+			}
 		}
+		
+		initialiserJoueurs(reponse);
+		
 		initialiserPlateau();
 	}
 	

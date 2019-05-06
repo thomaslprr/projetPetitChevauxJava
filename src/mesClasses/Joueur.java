@@ -13,7 +13,7 @@ public abstract class Joueur {
 	private String nomJoueur;
 	private Case caseJoueurDepart;
 	private Couleur couleurJoueur;
-	private ArrayList<Pion> pions;
+	private ArrayList<Pion> pions = new ArrayList<Pion>();
 	
 	
 	public Joueur(String nom, Couleur cou) {

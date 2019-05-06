@@ -6,13 +6,13 @@ import mesEnum.Couleur;
 
 public class Plateau {
 
-	private ArrayList<ArrayList<CaseDEchelle>> listeEchelles ;
-	private ArrayList<CaseDeChemin> caseChemin;
-	private ArrayList<CaseDEchelle> echelleRouge;
-	private ArrayList<CaseDEchelle> echelleJaune;
-	private ArrayList<CaseDEchelle> echelleBleu;
-	private ArrayList<CaseDEchelle> echelleVert;
-	private ArrayList<CaseEcurie> ecuries;
+	private ArrayList<ArrayList<CaseDEchelle>> listeEchelles = new ArrayList<ArrayList<CaseDEchelle>>();
+	private ArrayList<CaseDeChemin> caseChemin = new ArrayList<CaseDeChemin>();
+	private ArrayList<CaseDEchelle> echelleRouge = new ArrayList<CaseDEchelle>();
+	private ArrayList<CaseDEchelle> echelleJaune = new ArrayList<CaseDEchelle>();
+	private ArrayList<CaseDEchelle> echelleBleu = new ArrayList<CaseDEchelle>();
+	private ArrayList<CaseDEchelle> echelleVert = new ArrayList<CaseDEchelle>() ;
+	private ArrayList<CaseEcurie> ecuries = new ArrayList<CaseEcurie>();
 	
 	public Plateau() {
 		
