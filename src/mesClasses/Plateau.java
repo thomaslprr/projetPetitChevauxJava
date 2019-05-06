@@ -86,8 +86,23 @@ public class Plateau {
 			}
 		}
 		
+		for(CaseEcurie ce : ecuries) {
+			for(Pion pion : ce.getChevaux()) {
+				if(pion==p) {
+					ce.retirerCheval(p);
+				}
+			}
+		}
 		
-		
+		for(ArrayList<CaseDEchelle> le : listeEchelles) {
+			for(CaseDEchelle cec : le) {
+				for(Pion pion : cec.getChevaux()) {
+					if(pion==p) {
+						cec.retirerCheval(p);
+					}
+				}
+			}
+		}
 		
 		
 		c.ajouteCheval(p);
