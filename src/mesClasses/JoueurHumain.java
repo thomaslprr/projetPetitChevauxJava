@@ -18,7 +18,7 @@ public class JoueurHumain extends Joueur {
 		super(nom,cou);
 	}
 	
-	public int savoirPosition(Plateau pla, Pion pion) {
+	public static int savoirPosition(Plateau pla, Pion pion) {
 		for(CaseDeChemin cdc : pla.getChemin()) {
 			for(Pion pi : cdc.getChevaux()) {
 				if(pion==pi) {
@@ -37,7 +37,7 @@ public class JoueurHumain extends Joueur {
 	public Pion choisirPion(int de, Plateau pla) {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
-		int positionPion = savoirPosition(pla,)
+		
 		for(Pion pi : super.getPions()) {
 			
 		

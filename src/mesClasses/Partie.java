@@ -33,6 +33,8 @@ public class Partie  {
 		initialiserJoueurs(reponse);
 		
 		initialiserPlateau();
+		
+		p.afficher();
 	}
 	
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {

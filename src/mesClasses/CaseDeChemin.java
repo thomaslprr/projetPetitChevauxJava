@@ -5,7 +5,7 @@ package mesClasses;
  *
  */
 public class CaseDeChemin extends Case {
-	private static int compteurCaseChemin = 1 ;
+	private static int compteurCaseChemin = 0 ;
 	private int numeroCase ; 
 	
 	public CaseDeChemin() {
