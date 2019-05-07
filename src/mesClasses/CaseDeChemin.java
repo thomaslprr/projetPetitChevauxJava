@@ -36,8 +36,6 @@ public class CaseDeChemin extends Case {
 		}
 		return true;
 	}
-/**
- * A FAIRE PEUTPASSER et PEUTSARRETER, puis ChoisirPion
- */
+
 }
 	

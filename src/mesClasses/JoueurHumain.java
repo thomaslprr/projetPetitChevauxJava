@@ -17,14 +17,34 @@ public class JoueurHumain extends Joueur {
 	public JoueurHumain(String nom, Couleur cou) {
 		super(nom,cou);
 	}
+	
+	public int savoirPosition(Plateau pla, Pion pion) {
+		for(CaseDeChemin cdc : pla.getChemin()) {
+			for(Pion pi : cdc.getChevaux()) {
+				if(pion==pi) {
+					return cdc.getNumeroCaseChemin();
+				}				
+			}			
+		}
+		return 0;		
+	}
+		
+		
+		
+	
 
 	@Override
 	public Pion choisirPion(int de, Plateau pla) {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
+		int positionPion = savoirPosition(pla,)
+		for(Pion pi : super.getPions()) {
+			
 		
+			
+		}
 		
-		
+	
 		
 		
 		
