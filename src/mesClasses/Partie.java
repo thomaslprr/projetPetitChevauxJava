@@ -98,12 +98,20 @@ public class Partie  {
 		
 	}
 	
+	
+	public void joueurCommence() {
+		int nbreAleatoire = 1 + (int)(Math.random() * ((4 - 1) + 1));	
+		this.joueurCourant=joueurs.get(nbreAleatoire);
+		System.out.println("Le joueur "+ joueurCourant+" commence à lancer le dé.");
+	}
+	
+	
 	public void initialiserPlateau() {
 		p = new Plateau();
 	}
 	
 	public int lanceDe() {
-		this.de = (int)(Math.random() * 5);
+		this.de = 1 + (int)(Math.random() * ((6 - 1) + 1));
 		return de;
 	}
 	
@@ -135,13 +143,14 @@ public class Partie  {
 	}
 	
 	public void mangerLesPions(Case c) {
-		
-		
-		
-		
-		
-		
-		
-		
+		for(Pion pi : c.getChevaux()) {
+			for(CaseEcurie ce : p.getEcuries()) {
+				if(pi.getCouleur()==ce.getCouleur()) {
+					ce.ajouteCheval(pi);
+					ce.retirerCheval(pi);
+				}
+			}
+		}
+	
 	}
 }
