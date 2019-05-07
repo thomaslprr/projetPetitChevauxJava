@@ -26,5 +26,8 @@ public class CaseDeChemin extends Case {
 	public boolean peutSArreter(Pion pion) {
 		return false;
 	}
-
+/**
+ * A FAIRE PEUTPASSER et PEUTSARRETER, puis ChoisirPion
+ */
 }
+	
