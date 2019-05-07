@@ -1,6 +1,7 @@
 package mesClasses;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import mesEnum.Couleur;
 
@@ -18,7 +19,12 @@ public class JoueurHumain extends Joueur {
 	}
 
 	@Override
-	public Pion choisirPion(int num, Plateau pla) {
+	public Pion choisirPion(int de, Plateau pla) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
+		System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
+		
+		
 		
 		return null;
 	}
