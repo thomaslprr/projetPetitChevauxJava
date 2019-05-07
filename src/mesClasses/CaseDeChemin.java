@@ -19,12 +19,22 @@ public class CaseDeChemin extends Case {
 
 	@Override
 	public boolean peutPasser(Pion pion) {
-		return false;
+		for(Pion p : this.getChevaux()) {
+			if(p.getCouleur() != pion.getCouleur()) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public boolean peutSArreter(Pion pion) {
-		return false;
+		for(Pion p : this.getChevaux()) {
+			if(p.getCouleur() != pion.getCouleur()) {
+				return false;
+			}
+		}
+		return true;
 	}
 /**
  * A FAIRE PEUTPASSER et PEUTSARRETER, puis ChoisirPion
