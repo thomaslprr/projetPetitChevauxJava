@@ -22,6 +22,16 @@ public class JoueurHumain extends Joueur {
 	public Pion choisirPion(int de, Plateau pla) {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
 		
 		
