@@ -47,44 +47,24 @@ public class Partie  {
 			String nomChoisi;
 			Couleur couleurChoisi;
 			ArrayList<Couleur> couleursDisponible = new ArrayList<Couleur>();
-			couleursDisponible.add(Couleur.BLEU);
 			couleursDisponible.add(Couleur.JAUNE);
+			couleursDisponible.add(Couleur.BLEU);
 			couleursDisponible.add(Couleur.ROUGE);
 			couleursDisponible.add(Couleur.VERT);
-			
-			for(int i = 0; i < nbreJoueur; i++) {  
+			 
 				
-				
-				System.out.println("Quel est le prénom du joueur "+(i+1));
+			for(int j=0;j<nbreJoueur;j++) {
+				System.out.println("Quel est le prénom du joueur "+(j+1)+" pour la couleur "+ couleursDisponible.get(0));
 				nomChoisi = sc.nextLine();
 				
 				
-				int rep=-10;
 				
-				while(rep < 0 || rep >= couleursDisponible.size()) { 
-					
-					System.out.println("Choissisez une des couleurs suivantes : ");
-					for(int j = 0; j < couleursDisponible.size(); j++) {
-						System.out.println(j+"]  "+couleursDisponible.get(j));
-					}
-					
-					
-					try {
-						rep = sc.nextInt();
-					}catch (InputMismatchException exception) { 
-					    System.out.println("Mauvaise entrée");
-					    sc.next();
-					    rep = -1;
-					}
-				}
-				
-				couleurChoisi = couleursDisponible.get(rep);
-				couleursDisponible.remove(rep);
+				couleurChoisi = couleursDisponible.get(0);
+				couleursDisponible.remove(0);
 				
 					
 				joueurs.add(new JoueurHumain(nomChoisi ,couleurChoisi));
 				
-				sc.nextLine();
 			}
 			
 			sc.close();

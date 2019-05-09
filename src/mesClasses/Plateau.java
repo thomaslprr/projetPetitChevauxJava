@@ -114,34 +114,36 @@ public class Plateau {
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				if(plateauValeur[i][j]>=1 && plateauValeur[i][j]<=56) {
-					affichage[i][j]= "  " ;
+					affichage[i][j]= "   " ;
 				}if(plateauValeur[i][j]==-1) {
-					affichage[i][j]=Couleur.JAUNE.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-2) {
-					affichage[i][j]=Couleur.BLEU.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.BLEU.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-3) {
-					affichage[i][j]=Couleur.ROUGE.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.ROUGE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-4) {
-					affichage[i][j]=Couleur.VERT.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.VERT.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]>=75 && plateauValeur[i][j]<=80) {
-					affichage[i][j]=Couleur.VERT.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]>=69 && plateauValeur[i][j]<=74) {
-					affichage[i][j]=Couleur.JAUNE.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.VERT.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]>=63 && plateauValeur[i][j]<=68) {
-					affichage[i][j]=Couleur.ROUGE.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.ROUGE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]>=90 && plateauValeur[i][j]<=95) {
-					affichage[i][j]=Couleur.BLEU.getCode()+"  "+ Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.BLEU.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-11) {
-					affichage[i][j]= " "+ecuries.get(0).getChevaux().size();
+					affichage[i][j]= ecuries.get(0).getChevaux().size()+"♞ ";
 				}else if(plateauValeur[i][j]==-22) {
-					affichage[i][j]= " "+ecuries.get(1).getChevaux().size();
+					affichage[i][j]= ecuries.get(1).getChevaux().size()+"♞ ";
 				}else if(plateauValeur[i][j]==-33) {
-					affichage[i][j]= " "+ecuries.get(2).getChevaux().size();
+					affichage[i][j]= ecuries.get(2).getChevaux().size()+"♞ ";
 				}else if(plateauValeur[i][j]==-44) {
-					affichage[i][j]= " "+ecuries.get(3).getChevaux().size();
+					affichage[i][j]= ecuries.get(3).getChevaux().size()+"♞ ";
+				}else if(plateauValeur[i][j]==1000) {
+					affichage[i][j]= "FIN";
 				}
 				else {
-					affichage[i][j]=Couleur.BLANC.getCode()+ "  " + Couleur.BLANC.getCode();
+					affichage[i][j]=Couleur.BLANC.getCode()+ "   " + Couleur.BLANC.getCode();
 				}
 				
 			}
