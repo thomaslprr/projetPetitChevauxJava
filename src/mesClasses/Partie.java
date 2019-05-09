@@ -110,6 +110,11 @@ public class Partie  {
 	
 	public void initialiserPlateau() {
 		p = new Plateau();
+		for(int i=0;i<joueurs.size();i++) {
+			for(Pion pio: joueurs.get(i).getPions()) {
+				p.getEcuries().get(i).ajouteCheval(pio);
+			}
+		}
 	}
 	
 	public int lanceDe() {
