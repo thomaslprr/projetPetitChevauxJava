@@ -5,11 +5,11 @@ package mesEnum;
  *
  */
 public enum Couleur {
-	ROUGE ("Rouge","\033[1;31m"),
-    JAUNE ("Jaune","\033[01;33m"),
-    VERT ("Vert","\033[1;32m"),
-    BLEU ("Bleu","\033[34;01m"),
-    BLANC ("Blanc","\033[00m");
+	ROUGE ("Rouge","\033[1;41m"),
+    JAUNE ("Jaune","\033[01;43m"),
+    VERT ("Vert","\033[1;42m"),
+    BLEU ("Bleu","\033[1;44m"),
+    BLANC ("Blanc","\033[0m");
 
    private String nom;
    private String code;
@@ -24,9 +24,6 @@ public String getNom() {
 public String getCode() {
 	return code;
 }
-
-	
-	
 
 			
     		
