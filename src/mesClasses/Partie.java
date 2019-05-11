@@ -11,7 +11,7 @@ public class Partie  {
 	private int de;
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	private Plateau p;
-	private Joueur joueurCourant;
+	private Joueur joueurCourant ;
 	
 	public Partie() throws PasDeJoueursException  {
 		Scanner sc = new Scanner(System.in);
@@ -33,6 +33,14 @@ public class Partie  {
 		initialiserJoueurs(reponse);
 		
 		initialiserPlateau();
+		
+		p.afficher();
+		
+		joueurCourant = joueurs.get(2);
+		
+		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(12));
+		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(52));
+		
 		
 		p.afficher();
 	}

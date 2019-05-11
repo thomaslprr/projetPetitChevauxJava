@@ -114,7 +114,14 @@ public class Plateau {
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				if(plateauValeur[i][j]>=1 && plateauValeur[i][j]<=56) {
-					affichage[i][j]= "   " ;
+					for(CaseDeChemin cdc : caseChemin) {
+						if(cdc.getChevaux().size()>=6) {
+							affichage[i][j]=Couleur.BLANC.getCode()+ "  " + cdc.getChevaux().size() + Couleur.BLANC.getCode();
+						}
+						else {
+							affichage[i][j]=Couleur.BLANC.getCode()+ "   " + Couleur.BLANC.getCode();
+						}
+					}
 				}if(plateauValeur[i][j]==-1) {
 					affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-2) {
@@ -142,9 +149,7 @@ public class Plateau {
 				}else if(plateauValeur[i][j]==1000) {
 					affichage[i][j]= "FIN";
 				}
-				else {
-					affichage[i][j]=Couleur.BLANC.getCode()+ "   " + Couleur.BLANC.getCode();
-				}
+				
 				
 			}
 		}
