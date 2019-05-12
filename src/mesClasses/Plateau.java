@@ -110,18 +110,19 @@ public class Plateau {
 				{-44,-4,-4,-4,-4,-4,29,28,27,-3,-3,-3,-3,-3,-33}};
 		
 		String[][] affichage = new String[15][15];
-		
+		int val=0;
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				if(plateauValeur[i][j]>=1 && plateauValeur[i][j]<=56) {
-					for(CaseDeChemin cdc : caseChemin) {
-						if(cdc.getChevaux().size()>=6) {
-							affichage[i][j]=Couleur.BLANC.getCode()+ "  " + cdc.getChevaux().size() + Couleur.BLANC.getCode();
+						val=plateauValeur[i][j]-1;
+						if(this.getChemin().get(val).getChevaux().size()>=0) {
+							affichage[i][j]=Couleur.BLANC.getCode()+"  "+this.getChemin().get(val).getChevaux().size()+ Couleur.BLANC.getCode();
 						}
 						else {
-							affichage[i][j]=Couleur.BLANC.getCode()+ "   " + Couleur.BLANC.getCode();
+							affichage[i][j]=Couleur.BLANC.getCode()+"   "+ Couleur.BLANC.getCode();
+
 						}
-					}
+						
 				}if(plateauValeur[i][j]==-1) {
 					affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-2) {
@@ -153,7 +154,9 @@ public class Plateau {
 				
 			}
 		}
-
+		
+		System.out.println(this.getChemin().get(12).getChevaux().size());
+						
 
 		for(int i=0;i<15;i++) {
 			System.out.println();
