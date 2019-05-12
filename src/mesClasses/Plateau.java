@@ -111,18 +111,21 @@ public class Plateau {
 		
 		String[][] affichage = new String[15][15];
 		int val=0;
+		Couleur cou= Couleur.BLANC;
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				if(plateauValeur[i][j]>=1 && plateauValeur[i][j]<=56) {
 						val=plateauValeur[i][j]-1;
-						if(this.getChemin().get(val).getChevaux().size()>=0) {
-							affichage[i][j]=Couleur.BLANC.getCode()+"  "+this.getChemin().get(val).getChevaux().size()+ Couleur.BLANC.getCode();
+						if(this.getChemin().get(val).getChevaux().size()>0) {
+							for(Pion pi : this.getChemin().get(val).getChevaux()) {
+								cou=pi.getCouleur();
+							}
+							affichage[i][j]=Couleur.BLANC.getEcriture()+cou.getEcriture()+" "+this.getChemin().get(val).getChevaux().size()+" "+ Couleur.BLANC.getEcriture();
 						}
 						else {
-							affichage[i][j]=Couleur.BLANC.getCode()+"   "+ Couleur.BLANC.getCode();
+							affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
 
 						}
-						
 				}if(plateauValeur[i][j]==-1) {
 					affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-2) {

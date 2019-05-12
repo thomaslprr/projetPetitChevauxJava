@@ -20,4 +20,5 @@ public class Pion {
 	public Couleur getCouleur() {
 		return couleur;
 	}
+	
 }

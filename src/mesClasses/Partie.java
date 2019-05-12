@@ -39,7 +39,7 @@ public class Partie  {
 		joueurCourant = joueurs.get(2);
 		
 		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(12));
-		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(52));
+		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(12));
 		System.out.println(p.getChemin().get(12).getChevaux().size());
 		System.out.println(p.getChemin().get(13).getChevaux().size());
 		
