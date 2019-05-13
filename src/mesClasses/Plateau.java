@@ -116,11 +116,11 @@ public class Plateau {
 			for(int j=0;j<15;j++) {
 				if(plateauValeur[i][j]>=1 && plateauValeur[i][j]<=56) {
 						val=plateauValeur[i][j]-1;
-						if(this.getChemin().get(val).getChevaux().size()>0) {
-							for(Pion pi : this.getChemin().get(val).getChevaux()) {
+						if(caseChemin.get(val).getChevaux().size()>0) {
+							for(Pion pi : caseChemin.get(val).getChevaux()) {
 								cou=pi.getCouleur();
 							}
-							affichage[i][j]=Couleur.BLANC.getEcriture()+cou.getEcriture()+" "+this.getChemin().get(val).getChevaux().size()+" "+ Couleur.BLANC.getEcriture();
+							affichage[i][j]=Couleur.BLANC.getEcriture()+cou.getEcriture()+" "+caseChemin.get(val).getChevaux().size()+" "+ Couleur.BLANC.getEcriture();
 						}
 						else {
 							affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
@@ -169,22 +169,7 @@ public class Plateau {
 		
 		
 		System.out.println();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 	}
 	
@@ -192,16 +177,20 @@ public class Plateau {
 		
 		for(CaseDeChemin cc : caseChemin) {
 			for(Pion pion : cc.getChevaux()) {
-				if(pion==p) {
+				if(p==pion) {
 					cc.retirerCheval(p);
+					c.ajouteCheval(p);
+					return ;
 				}
 			}
 		}
 		
 		for(CaseEcurie ce : ecuries) {
 			for(Pion pion : ce.getChevaux()) {
-				if(pion==p) {
+				if(p==pion) {
 					ce.retirerCheval(p);
+					c.ajouteCheval(p);
+					return;
 				}
 			}
 		}
@@ -209,15 +198,17 @@ public class Plateau {
 		for(ArrayList<CaseDEchelle> le : listeEchelles) {
 			for(CaseDEchelle cec : le) {
 				for(Pion pion : cec.getChevaux()) {
-					if(pion==p) {
+					if(p==pion) {
 						cec.retirerCheval(p);
+						c.ajouteCheval(p);
+						return;
 					}
 				}
 			}
 		}
 		
 		
-		c.ajouteCheval(p);
+		
 	}
 
 }

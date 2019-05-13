@@ -14,7 +14,7 @@ public abstract class Joueur {
 	private Case caseJoueurDepart;
 	private Couleur couleurJoueur;
 	private ArrayList<Pion> pions = new ArrayList<Pion>();
-	
+	private boolean aFini = false;
 	
 	public Joueur(String nom, Couleur cou) {
 		nomJoueur=nom;
@@ -55,7 +55,7 @@ public abstract class Joueur {
 	}
 	
 	public boolean aFini() {
-		return false;
+		return aFini;
 	}
 	
 	public abstract Pion choisirPion(int num, Plateau pla);

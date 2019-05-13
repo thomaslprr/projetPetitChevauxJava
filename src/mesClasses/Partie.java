@@ -36,17 +36,23 @@ public class Partie  {
 		
 		p.afficher();
 		
+		joueurCourant = joueurs.get(1);
+		
+		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(12));
+		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(13));
+		
 		joueurCourant = joueurs.get(2);
+		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(46));
+		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(34));
 		
-		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(55));
-		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(0));
-		System.out.println(p.getChemin().get(12).getChevaux().size());
-		System.out.println(p.getChemin().get(13).getChevaux().size());
+		joueurCourant = joueurs.get(3);
+		p.deplacerPionA(joueurCourant.getPions().get(0), p.getChemin().get(14));
 		
+		
+	
 		
 		p.afficher();
-		System.out.println(JoueurHumain.savoirPosition(p,joueurCourant.getPions().get(2)));
-		System.out.println(JoueurHumain.savoirPosition(p,joueurCourant.getPions().get(1)));
+		
 	}
 	
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
@@ -115,6 +121,22 @@ public class Partie  {
 	}
 	
 	public void jouerUnTour() {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	
