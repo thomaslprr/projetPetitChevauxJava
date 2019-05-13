@@ -22,7 +22,7 @@ public class JoueurHumain extends Joueur {
 		for(CaseDeChemin cdc : pla.getChemin()) {
 			for(Pion pi : cdc.getChevaux()) {
 				if(pion==pi) {
-					return cdc.getNumeroCaseChemin();
+					return cdc.getNumeroCaseChemin()+1;
 				}				
 			}			
 		}

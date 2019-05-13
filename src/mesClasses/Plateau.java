@@ -157,9 +157,7 @@ public class Plateau {
 				
 			}
 		}
-		
-		System.out.println(this.getChemin().get(12).getChevaux().size());
-						
+								
 
 		for(int i=0;i<15;i++) {
 			System.out.println();

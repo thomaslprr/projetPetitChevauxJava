@@ -29,11 +29,6 @@ public class CaseDeChemin extends Case {
 
 	@Override
 	public boolean peutSArreter(Pion pion) {
-		for(Pion p : this.getChevaux()) {
-			if(p.getCouleur() != pion.getCouleur()) {
-				return false;
-			}
-		}
 		return true;
 	}
 
