@@ -18,7 +18,7 @@ public class JoueurHumain extends Joueur {
 		super(nom,cou);
 	}
 	
-	public static int savoirPosition(Plateau pla, Pion pion) {
+	public int savoirPosition(Plateau pla, Pion pion) {
 		for(CaseDeChemin cdc : pla.getChemin()) {
 			for(Pion pi : cdc.getChevaux()) {
 				if(pion==pi) {

@@ -2,13 +2,14 @@ package mesClasses;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 import mesEnum.Couleur;
 import mesExceptions.PasDeJoueursException;
 
 public class Partie  {
-	private int de;
+	private Random de= new Random();
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	private Plateau p;
 	private Joueur joueurCourant ;
@@ -100,10 +101,11 @@ public class Partie  {
 	
 	
 	public void joueurCommence() {
-		int nbreAleatoire = 1 + (int)(Math.random() * ((4 - 1) + 1));	
+		int nbreAleatoire = 1 + (int)(Math.random() * ((3) + 1));	
 		this.joueurCourant=joueurs.get(nbreAleatoire);
 		System.out.println("Le joueur "+ joueurCourant+" commence à lancer le dé.");
 	}
+	
 	
 	
 	public void initialiserPlateau() {
@@ -111,17 +113,70 @@ public class Partie  {
 		for(int i=0;i<joueurs.size();i++) {
 			for(Pion pio: joueurs.get(i).getPions()) {
 				p.getEcuries().get(i).ajouteCheval(pio);
+				
 			}
+			joueurs.get(i).setCaseDeDepart(p.getChemin().get(0+joueurs.indexOf(joueurs.get(i))*14));
 		}
 	}
 	
 	public int lanceDe() {
-		this.de = 1 + (int)(Math.random() * ((6 - 1) + 1));
-		return de;
+		return de.nextInt(6) + 1;
 	}
 	
 	public void jouerUnTour() {
 		
+		int resultatDe = lanceDe();
+		
+		Pion pionABouger = joueurCourant.choisirPion(resultatDe, p);
+		
+		Case caseArrivé = null;
+		
+		if(pionABouger != null ) {
+			
+			if(resultatDe != 6) {
+				
+				for(Case cases : p.getEcuries()) {
+	                if(cases.getChevaux().indexOf(pionABouger) != -1)
+	                    caseArrivé = joueurCourant.getCaseDeDepart();
+	            }
+				
+				for(Case cases : p.getChemin()) {
+	                if(cases.getChevaux().indexOf(pionABouger) != -1)
+	                    caseArrivé = p.getChemin().get(p.getChemin().indexOf(pionABouger)+resultatDe);
+	            }
+				
+				for(ArrayList<CaseDEchelle> le : p.getEchelles()) {
+					for(CaseDEchelle cec : le) {
+						if(cec.getChevaux().indexOf(pionABouger) != -1) {
+							caseArrivé= le.get(cec.getChevaux().indexOf(pionABouger)+1);
+						}
+					}
+				}
+				
+				
+				
+				
+				p.deplacerPionA(pionABouger, caseArrivé);
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
 		
 		
 		
@@ -132,11 +187,7 @@ public class Partie  {
 		
 		
 		
-		
-		
-		
-		
-		
+		setJoueurCourrant(joueurCourant);
 		
 	}
 	
@@ -150,8 +201,11 @@ public class Partie  {
 	}
 	
 	public void setJoueurCourrant(Joueur j) {
-		this.joueurCourant = j;
+		int numJ = joueurs.indexOf(j);
+		numJ = (numJ+1)%4;
+		this.joueurCourant = joueurs.get(numJ);
 	}
+	
 	
 	public Plateau getPlateau() {
 		return p;
