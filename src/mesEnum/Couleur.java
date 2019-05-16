@@ -8,7 +8,7 @@ public enum Couleur {
 	ROUGE ("Rouge","\033[1;41m","\033[34;31m"),
     JAUNE ("Jaune","\033[01;43m","\033[34;33m"),
     VERT ("Vert","\033[1;42m","\033[34;32m"),
-    BLEU ("Bleu","\033[1;44m","\033[34;34m"),
+    BLEU ("Bleu","\033[1;46m","\033[34;36m"),
     BLANC ("Blanc","\033[0m","\033[00m");
 
    private String nom;

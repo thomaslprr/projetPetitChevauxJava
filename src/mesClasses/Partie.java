@@ -13,46 +13,21 @@ public class Partie  {
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	private Plateau p;
 	private Joueur joueurCourant ;
+	public static final Scanner sc = new Scanner(System.in);
 	
 	public Partie() throws PasDeJoueursException  {
-		Scanner sc = new Scanner(System.in);
 		int reponse=-1;
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
 		System.out.println("Vous venez de lancer une partie, bonne partie.");
 		
-		while(reponse <= 0 || reponse > 4) {
-			System.out.println("Combien voulez-vous de joueur(s) ?");
-			try {
-				reponse = sc.nextInt();
-			}catch (InputMismatchException exception) { 
-			    System.out.println("Mauvaise entrée");
-			    sc.next();
-			    reponse = -1;
-			}
-		}
 		
-		initialiserJoueurs(reponse);
+		
+		initialiserJoueurs(4);
 		
 		initialiserPlateau();
 		
 		p.afficher();
 		
-		joueurCourant = joueurs.get(1);
-		
-		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(12));
-		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(13));
-		
-		joueurCourant = joueurs.get(2);
-		p.deplacerPionA(joueurCourant.getPions().get(2), p.getChemin().get(46));
-		p.deplacerPionA(joueurCourant.getPions().get(1), p.getChemin().get(34));
-		
-		joueurCourant = joueurs.get(3);
-		p.deplacerPionA(joueurCourant.getPions().get(0), p.getChemin().get(14));
-		
-		
-	
-		
-		p.afficher();
 		
 	}
 	
@@ -86,7 +61,6 @@ public class Partie  {
 				
 			}
 			
-			sc.close();
 			for(Joueur jh : joueurs) {
 				System.out.println(jh.getNom() + " a pour couleur "+ jh.getCouleur().getNom());
 			}
@@ -94,16 +68,17 @@ public class Partie  {
 		
 		}
 		
-		
+		this.joueurCommence();
+        System.out.println(joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+" Commence !\033[0m");
 		
 		
 	}
 	
 	
 	public void joueurCommence() {
-		int nbreAleatoire = 1 + (int)(Math.random() * ((3) + 1));	
+		int nbreAleatoire = (int)(Math.random() * ((3) + 1));
 		this.joueurCourant=joueurs.get(nbreAleatoire);
-		System.out.println("Le joueur "+ joueurCourant+" commence à lancer le dé.");
+		System.out.println(joueurCourant.getNom()+" commence à lancer le dé.");
 	}
 	
 	
@@ -117,6 +92,25 @@ public class Partie  {
 			}
 			joueurs.get(i).setCaseDeDepart(p.getChemin().get(0+joueurs.indexOf(joueurs.get(i))*14));
 		}
+		for(Joueur j : joueurs) {
+			switch (j.getCouleur()) {
+			case JAUNE:
+				j.setCaseDeDepart(p.getChemin().get(42));
+				break;
+			case VERT:
+				j.setCaseDeDepart(p.getChemin().get(28));
+				break;
+			case BLEU:
+				j.setCaseDeDepart(p.getChemin().get(0));
+				break;
+			case ROUGE:
+				j.setCaseDeDepart(p.getChemin().get(14));
+				break;
+			default:
+				break;
+			}
+		}
+		
 	}
 	
 	public int lanceDe() {
@@ -124,7 +118,6 @@ public class Partie  {
 	}
 	
 	public void jouerUnTour() {
-		
 		int resultatDe = lanceDe();
 		
 		Pion pionABouger = joueurCourant.choisirPion(resultatDe, p);
@@ -133,7 +126,6 @@ public class Partie  {
 		
 		if(pionABouger != null ) {
 			
-			if(resultatDe != 6) {
 				
 				for(Case cases : p.getEcuries()) {
 	                if(cases.getChevaux().indexOf(pionABouger) != -1)
@@ -141,8 +133,14 @@ public class Partie  {
 	            }
 				
 				for(Case cases : p.getChemin()) {
-	                if(cases.getChevaux().indexOf(pionABouger) != -1)
-	                    caseArrivé = p.getChemin().get(p.getChemin().indexOf(pionABouger)+resultatDe);
+	                if(cases.getChevaux().indexOf(pionABouger) != -1) {
+	                	if(p.getChemin().indexOf(cases)+resultatDe<=55) {
+	                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe);
+	                	}else {
+	                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe-56);
+	                	}
+	                }
+	                    
 	            }
 				
 				for(ArrayList<CaseDEchelle> le : p.getEchelles()) {
@@ -165,18 +163,9 @@ public class Partie  {
 				
 				
 				
+			}else {
+				System.out.println("Vous ne pouvez pas déplacer de pion.");
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		}
 		
 		
 		
@@ -186,13 +175,33 @@ public class Partie  {
 		
 		
 		
-		
+		p.afficher();
 		setJoueurCourrant(joueurCourant);
-		
+		System.out.println("C'est au tour de "+ joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+"\033[0m de jouer");
+		sc.nextLine();
 	}
 	
 	public boolean estPartieTermine() {
-		return false;	
+		
+		for(ArrayList<CaseDEchelle> echelle : p.getEchelles())	{
+			
+			boolean ok = true;
+			
+				for(int i=2;i<6; i++) {
+					
+					if(echelle.get(i).getChevaux().size()!=1) {
+						
+						ok=false;
+					}
+					
+				}	
+				
+			if(ok==true) {
+				return true;
+			}
+				
+		}
+		return false;
 	}
 	
 	public Joueur getJoueurCourrant() {

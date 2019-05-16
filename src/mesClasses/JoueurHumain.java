@@ -1,7 +1,6 @@
 package mesClasses;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import mesEnum.Couleur;
 
@@ -35,7 +34,7 @@ public class JoueurHumain extends Joueur {
 
 	@Override
 	public Pion choisirPion(int de, Plateau pla) {
-		Scanner sc = new Scanner(System.in);
+
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
 		
 		for(Pion pi : super.getPions()) {
@@ -56,6 +55,6 @@ public class JoueurHumain extends Joueur {
 		
 		
 		
-		return null;
+		return this.getPions().get(1);
 	}
 }

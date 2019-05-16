@@ -1,5 +1,6 @@
 package mesClasses;
 
+
 import mesExceptions.PasDeJoueursException;
 
 /**
@@ -14,8 +15,12 @@ public class PetitsChevaux {
 	}
 
 	public static void main(String[] args) throws PasDeJoueursException {
+		
 		Partie p1 = new Partie();
-
+		
+			do {
+				p1.jouerUnTour();
+			}while(p1.estPartieTermine()==false);
 	}
 
 }
