@@ -57,7 +57,8 @@ public class JoueurHumain extends Joueur {
 			for(CaseDeChemin cdc : pla.getChemin()) {
 				for(Pion pio : cdc.getChevaux()) {
 					if(pi==pio) {
-						
+						for(int i=)
+						pla.getChemin().get(pla.getChemin().indexOf(cdc)+de;
 					}
 				}
 			}
