@@ -24,11 +24,7 @@ public class Partie  {
 		
 		initialiserJoueurs(4);
 		
-		initialiserPlateau();
-		
-		p.afficher();
-		
-		
+		initialiserPlateau();		
 	}
 	
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
@@ -69,7 +65,7 @@ public class Partie  {
 		}
 		
 		this.joueurCommence();
-        System.out.println(joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+" Commence !\033[0m");
+        System.out.println(joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+" commence à jouer !\033[0m");
 		
 		
 	}
@@ -78,7 +74,6 @@ public class Partie  {
 	public void joueurCommence() {
 		int nbreAleatoire = (int)(Math.random() * ((3) + 1));
 		this.joueurCourant=joueurs.get(nbreAleatoire);
-		System.out.println(joueurCourant.getNom()+" commence à lancer le dé.");
 	}
 	
 	
@@ -119,10 +114,12 @@ public class Partie  {
 	
 	public void jouerUnTour() {
 		int resultatDe = lanceDe();
-		
+		System.out.println("Résultat du dé : "+ resultatDe);
+		sc.nextLine();
 		Pion pionABouger = joueurCourant.choisirPion(resultatDe, p);
 		
 		Case caseArrivé = null;
+		
 		
 		if(pionABouger != null ) {
 			
@@ -157,7 +154,7 @@ public class Partie  {
 				p.deplacerPionA(pionABouger, caseArrivé);
 				
 				
-				
+				p.afficher();
 				
 				
 				
@@ -174,8 +171,8 @@ public class Partie  {
 		
 		
 		
+		sc.nextLine();
 		
-		p.afficher();
 		setJoueurCourrant(joueurCourant);
 		System.out.println("C'est au tour de "+ joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+"\033[0m de jouer");
 		sc.nextLine();

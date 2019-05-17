@@ -36,12 +36,22 @@ public class JoueurHumain extends Joueur {
 	public Pion choisirPion(int de, Plateau pla) {
 
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
-		
-		for(Pion pi : super.getPions()) {
-			
-		
-			
+		int choix=-1;
+		for(CaseEcurie ce : pla.getEcuries()) {
+			if(this.getPions().size()==4 && ce.getCouleur()==this.getCouleur()) {
+				if(de==6) {
+					choixPossible.add(this.getPions().get(0));
+					choixPossible.add(this.getPions().get(1));
+					choixPossible.add(this.getPions().get(2));
+					choixPossible.add(this.getPions().get(3));
+				}
+				else {
+					return null;
+				}
+			}
 		}
+		
+		
 		
 	
 		
@@ -52,9 +62,13 @@ public class JoueurHumain extends Joueur {
 		
 		
 		System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
+		for(int i=0;i<choixPossible.size();i++) {
+			System.out.println((i+1)+" : "+"Pion n°"+(i+1));
+		}
+		choix=Partie.sc.nextInt();
 		
-		
-		
-		return this.getPions().get(1);
+		return this.getPions().get(choix-1);
+
+	
 	}
 }
