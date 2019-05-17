@@ -37,16 +37,28 @@ public class JoueurHumain extends Joueur {
 
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
 		int choix=-1;
-		for(CaseEcurie ce : pla.getEcuries()) {
-			if(ce.getChevaux().size()==4 && ce.getCouleur()==this.getCouleur()) {
-				if(de==6) {
-					choixPossible.add(this.getPions().get(0));
-					choixPossible.add(this.getPions().get(1));
-					choixPossible.add(this.getPions().get(2));
-					choixPossible.add(this.getPions().get(3));
-				}
-				else {
-					return null;
+		
+		for(Pion pi : this.getPions()) {
+			
+			
+			for(CaseEcurie ce : pla.getEcuries()) {
+				for(Pion pio : ce.getChevaux()) {
+					if(pi==pio) {
+						if(de==6) {
+							choixPossible.add(pi);
+						}else {
+							
+						}	
+					}	
+				}	
+			}
+			
+			
+			for(CaseDeChemin cdc : pla.getChemin()) {
+				for(Pion pio : cdc.getChevaux()) {
+					if(pi==pio) {
+						
+					}
 				}
 			}
 			
@@ -54,12 +66,10 @@ public class JoueurHumain extends Joueur {
 			
 			
 			
-			
-			
-			
-			
-			
 		}
+		
+		
+		
 		
 		
 		
