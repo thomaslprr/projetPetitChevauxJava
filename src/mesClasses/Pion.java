@@ -20,5 +20,7 @@ public class Pion {
 	public Couleur getCouleur() {
 		return couleur;
 	}
-	
+	public String getId() {
+		return id;
+	}
 }
