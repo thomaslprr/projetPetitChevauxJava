@@ -28,6 +28,17 @@ public class JoueurHumain extends Joueur {
 		return 0;		
 	}
 		
+	public int savoirPositionEchelle(Plateau pla, Pion pion) {
+		for(ArrayList<CaseDEchelle> listeE : pla.getEchelles()) {
+			for(CaseDEchelle cde : listeE ) {
+				for(Pion pi : cde.getChevaux())
+					if(pion==pi) {
+						return cde.getNumeroCaseEchelle();
+					}				
+			}			
+		}
+		return 0;		
+	}
 		
 		
 	
@@ -53,13 +64,40 @@ public class JoueurHumain extends Joueur {
 				}	
 			}
 			
-			
+			int numFuturCase;
+			boolean erreurTrajet=false;
 			for(CaseDeChemin cdc : pla.getChemin()) {
 				for(Pion pio : cdc.getChevaux()) {
 					if(pi==pio) {
-						for(int i=)
-						pla.getChemin().get(pla.getChemin().indexOf(cdc)+de;
+						for(int i=1;i<de;i++) {
+							numFuturCase = pla.getChemin().indexOf(cdc)+i;
+							if(pla.getChemin().get(numFuturCase).peutPasser(pi)==false) {
+								erreurTrajet=true;
+							}
+						}
+						numFuturCase = pla.getChemin().indexOf(cdc)+de;
+						if(pla.getChemin().get(numFuturCase).peutSArreter(pi)==false) {
+							erreurTrajet=true;
+						}
+						if(erreurTrajet==false) {
+							choixPossible.add(pi);
+						}
+						
 					}
+				}
+			}
+			
+			int caseApres;
+			for(ArrayList<CaseDEchelle> listeechelle : pla.getEchelles()) {
+				for(CaseDEchelle cde : listeechelle) {
+					caseApres = pla.getChemin().indexOf(cde)+1;
+					for(Pion pio : cde.getChevaux()) {
+						if(pi==pio) {
+							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi)){
+								choixPossible.add(pi);
+							}
+						}
+					}	
 				}
 			}
 			
@@ -78,17 +116,17 @@ public class JoueurHumain extends Joueur {
 		
 		
 		
-		
-		
-		
-		
-		System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
-		for(int i=0;i<choixPossible.size();i++) {
-			System.out.println((i+1)+" : "+"Pion n°"+(i+1));
+		if(choixPossible.size()>0) {
+			System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
+			for(int i=0;i<choixPossible.size();i++) {
+				System.out.println((i+1)+" : "+"Pion n°"+(i+1));
+			}
+			choix=Partie.sc.nextInt();
+			return this.getPions().get(choix-1);
+		}else {
+			return null;
 		}
-		choix=Partie.sc.nextInt();
-		
-		return this.getPions().get(choix-1);
+	
 
 	
 	}

@@ -15,14 +15,18 @@ public class CaseEcurie extends CaseColoree {
 
 	@Override
 	public boolean peutPasser(Pion pion) {
-		// TODO Auto-generated method stub
-		return false;
+		if(pion.getCouleur() == this.getCouleur())
+            return true;
+        else
+            return false;
 	}
 
 	@Override
 	public boolean peutSArreter(Pion pion) {
-		// TODO Auto-generated method stub
-		return false;
+		if(pion.getCouleur() == this.getCouleur())
+            return true;
+        else
+            return false;
 	}
 
 }

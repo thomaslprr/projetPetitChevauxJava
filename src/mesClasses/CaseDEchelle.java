@@ -28,14 +28,18 @@ public class CaseDEchelle extends CaseColoree {
 
 	@Override
 	public boolean peutPasser(Pion pion) {
-		// TODO Auto-generated method stub
-		return false;
+		if(this.getChevaux().size()>0) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public boolean peutSArreter(Pion pion) {
-		// TODO Auto-generated method stub
-		return false;
+		if(this.getChevaux().size()>0) {
+			return false;
+		}
+		return true;
 	}
 
 }
