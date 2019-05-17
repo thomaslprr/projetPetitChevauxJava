@@ -38,7 +38,7 @@ public class JoueurHumain extends Joueur {
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
 		int choix=-1;
 		for(CaseEcurie ce : pla.getEcuries()) {
-			if(this.getPions().size()==4 && ce.getCouleur()==this.getCouleur()) {
+			if(ce.getChevaux().size()==4 && ce.getCouleur()==this.getCouleur()) {
 				if(de==6) {
 					choixPossible.add(this.getPions().get(0));
 					choixPossible.add(this.getPions().get(1));
@@ -49,6 +49,16 @@ public class JoueurHumain extends Joueur {
 					return null;
 				}
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 		
 		
