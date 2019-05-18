@@ -41,7 +41,48 @@ public class JoueurHumain extends Joueur {
 	}
 		
 		
+	public boolean depasseTour(Pion pi, int de, Plateau pla) {
+		
+		int numFuturCase;
+		for(CaseDeChemin cdc : pla.getChemin()) {
+			for(Pion pio : cdc.getChevaux()) {
+				if(pi==pio) {
+						numFuturCase = pla.getChemin().indexOf(cdc)+de;
+						
+						if(pi.getCouleur()==Couleur.BLEU ) {
+							if(numFuturCase>55 && pla.getChemin().indexOf(cdc)<=55) {
+								return true;
+							}else {
+								return false;
+							}
+						}else if (pi.getCouleur()==Couleur.VERT ) {
+							if(numFuturCase>27 && pla.getChemin().indexOf(cdc)<=27) {
+
+								return true;
+							}else {
+								return false;
+							}
+						}else if(pi.getCouleur()==Couleur.JAUNE ) {
+							if(numFuturCase>41 && pla.getChemin().indexOf(cdc)<=41) {
+
+								return true;
+							}else {
+								return false;
+							}
+						}else if(pi.getCouleur()==Couleur.ROUGE ) {
+							if(numFuturCase>13 && pla.getChemin().indexOf(cdc)<=13) {
+
+								return true;
+							}else {
+								return false;
+							}
+						}
+				}
 	
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public Pion choisirPion(int de, Plateau pla) {
@@ -57,9 +98,7 @@ public class JoueurHumain extends Joueur {
 					if(pi==pio) {
 						if(de==6) {
 							choixPossible.add(pi);
-						}else {
-							
-						}	
+						}
 					}	
 				}	
 			}
@@ -84,6 +123,10 @@ public class JoueurHumain extends Joueur {
                         }
 						if(pla.getChemin().get(numFuturCase).peutSArreter(pi)==false) {
 							erreurTrajet=true;
+						}
+						if(depasseTour(pi,de,pla)) {
+							erreurTrajet=true;
+							System.out.println("aieaieaie");
 						}
 						if(erreurTrajet==false) {
 							choixPossible.add(pi);
