@@ -119,7 +119,7 @@ public class JoueurHumain extends Joueur {
 		if(choixPossible.size()>0) {
 			System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
 			for(int i=0;i<choixPossible.size();i++) {
-				System.out.println((i+1)+" : "+"Pion "+this.getPions().get(i).getId());
+				System.out.println(choixPossible.get(i).getId()+" : "+"Pion "+choixPossible.get(i).getId());
 			}
 			choix=Partie.sc.nextInt();
 			return this.getPions().get(choix-1);
