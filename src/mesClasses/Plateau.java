@@ -138,32 +138,30 @@ public class Plateau {
 				}else if(plateauValeur[i][j]>=75 &&plateauValeur[i][j]<=80 ) {
 					val=plateauValeur[i][j]-75;
 					if(listeEchelles.get(0).get(val2).getChevaux().size()>0) {
-						affichage[i][j]=Couleur.BLANC.getCode()+" ♞ "+Couleur.BLANC.getCode();
+						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.JAUNE.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
-					}
-					
-					
+						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
+					}	
 				}else if(plateauValeur[i][j]>=69 && plateauValeur[i][j]<=74) {
 					val=plateauValeur[i][j]-69;
-					if(listeEchelles.get(0).get(val2).getChevaux().size()>0) {
-						affichage[i][j]=Couleur.BLANC.getCode()+" ♞ "+Couleur.BLANC.getCode();
+					if(listeEchelles.get(2).get(val2).getChevaux().size()>0) {
+						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.VERT.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.VERT.getCode()+"   "+ Couleur.VERT.getCode();
+						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
 					}
 				}else if(plateauValeur[i][j]>=63 && plateauValeur[i][j]<=68) {
 					val=plateauValeur[i][j]-63;
-					if(listeEchelles.get(0).get(val2).getChevaux().size()>0) {
-						affichage[i][j]=Couleur.BLANC.getCode()+" ♞ "+Couleur.BLANC.getCode();
+					if(listeEchelles.get(1).get(val2).getChevaux().size()>0) {
+						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.ROUGE.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.ROUGE.getCode()+"   "+ Couleur.ROUGE.getCode();
+						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
 					}
 				}else if(plateauValeur[i][j]>=90 && plateauValeur[i][j]<=95) {
 					val=plateauValeur[i][j]-90;
-					if(listeEchelles.get(0).get(val2).getChevaux().size()>0) {
-						affichage[i][j]=Couleur.BLANC.getCode()+" ♞ "+Couleur.BLANC.getCode();
+					if(listeEchelles.get(3).get(val2).getChevaux().size()>0) {
+						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.BLEU.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.BLEU.getCode()+"   "+ Couleur.BLEU.getCode();
+						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
 					}
 				}else if(plateauValeur[i][j]==1000) {
 					affichage[i][j]= "FIN";
