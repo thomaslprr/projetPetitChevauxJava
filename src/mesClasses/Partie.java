@@ -148,7 +148,9 @@ public class Partie  {
 	                	}else if(p.getChemin().indexOf(cases)==13 && pionABouger.getCouleur()==Couleur.ROUGE) {
 	                		caseArrivé= p.getEchelles().get(1).get(0);
 	                	}
-	                	mangerLesPions(caseArrivé);
+	                	if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
+			                	mangerLesPions(caseArrivé);
+		                }
 	                }
 	                    
 	            }
