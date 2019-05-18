@@ -102,14 +102,14 @@ public class JoueurHumain extends Joueur {
 								return false;
 							}
 						}else if(pi.getCouleur()==Couleur.JAUNE ) {
-							if(pla.getChemin().indexOf(cdc)<=41 && de==1) {
+							if(pla.getChemin().indexOf(cdc)==41 && de==1) {
 
 								return true;
 							}else {
 								return false;
 							}
 						}else if(pi.getCouleur()==Couleur.ROUGE ) {
-							if(pla.getChemin().indexOf(cdc)<=13 && de==1) {
+							if(pla.getChemin().indexOf(cdc)==13 && de==1) {
 
 								return true;
 							}else {
