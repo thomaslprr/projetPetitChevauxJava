@@ -136,6 +136,7 @@ public class Partie  {
 	                	}else {
 	                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56);
 	                	}
+	                	mangerLesPions(caseArrivé);
 	                }
 	                    
 	            }
@@ -226,10 +227,12 @@ public class Partie  {
 			for(CaseEcurie ce : p.getEcuries()) {
 				if(pi.getCouleur()==ce.getCouleur()) {
 					ce.ajouteCheval(pi);
-					ce.retirerCheval(pi);
+					System.out.println(ce.getChevaux().size());
 				}
 			}
 		}
+		c.getChevaux().clear();
+		
 	
 	}
 }

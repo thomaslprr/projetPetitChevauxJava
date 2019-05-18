@@ -145,11 +145,11 @@ public class Plateau {
 				}else if(plateauValeur[i][j]==-11) {
 					affichage[i][j]= ecuries.get(0).getChevaux().size()+"♞ ";
 				}else if(plateauValeur[i][j]==-22) {
-					affichage[i][j]= ecuries.get(1).getChevaux().size()+"♞ ";
-				}else if(plateauValeur[i][j]==-33) {
-					affichage[i][j]= ecuries.get(2).getChevaux().size()+"♞ ";
-				}else if(plateauValeur[i][j]==-44) {
 					affichage[i][j]= ecuries.get(3).getChevaux().size()+"♞ ";
+				}else if(plateauValeur[i][j]==-33) {
+					affichage[i][j]= ecuries.get(1).getChevaux().size()+"♞ ";
+				}else if(plateauValeur[i][j]==-44) {
+					affichage[i][j]= ecuries.get(2).getChevaux().size()+"♞ ";
 				}else if(plateauValeur[i][j]==1000) {
 					affichage[i][j]= "FIN";
 				}
