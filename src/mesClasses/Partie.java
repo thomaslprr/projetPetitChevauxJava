@@ -227,7 +227,6 @@ public class Partie  {
 			for(CaseEcurie ce : p.getEcuries()) {
 				if(pi.getCouleur()==ce.getCouleur()) {
 					ce.ajouteCheval(pi);
-					System.out.println(ce.getChevaux().size());
 				}
 			}
 		}
