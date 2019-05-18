@@ -71,11 +71,18 @@ public class JoueurHumain extends Joueur {
 					if(pi==pio) {
 						for(int i=1;i<de;i++) {
 							numFuturCase = pla.getChemin().indexOf(cdc)+i;
+							if(numFuturCase > 55) {
+	                            numFuturCase -= 56;
+	                            System.out.println("On rentre bien dans le iffff wsh");
+	                        }
 							if(pla.getChemin().get(numFuturCase).peutPasser(pi)==false) {
 								erreurTrajet=true;
 							}
 						}
 						numFuturCase = pla.getChemin().indexOf(cdc)+de;
+						if(numFuturCase > 55) {
+                            numFuturCase -= 56;
+                        }
 						if(pla.getChemin().get(numFuturCase).peutSArreter(pi)==false) {
 							erreurTrajet=true;
 						}

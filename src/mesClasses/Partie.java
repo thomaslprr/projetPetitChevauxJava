@@ -134,7 +134,7 @@ public class Partie  {
 	                	if(p.getChemin().indexOf(cases)+resultatDe<=55) {
 	                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe);
 	                	}else {
-	                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe-56);
+	                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56);
 	                	}
 	                }
 	                    
