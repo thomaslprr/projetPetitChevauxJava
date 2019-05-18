@@ -84,6 +84,45 @@ public class JoueurHumain extends Joueur {
 		return false;
 	}
 
+	public boolean peutMonterEchelle(Pion pi, int de, Plateau pla) {
+		for(CaseDeChemin cdc : pla.getChemin()) {
+			for(Pion pio : cdc.getChevaux()) {
+				if(pi==pio) {						
+						if(pi.getCouleur()==Couleur.BLEU ) {
+							if(pla.getChemin().indexOf(cdc)==55 && de==1) {
+								return true;
+							}else {
+								return false;
+							}
+						}else if (pi.getCouleur()==Couleur.VERT ) {
+							if(pla.getChemin().indexOf(cdc)==27 && de==1) {
+
+								return true;
+							}else {
+								return false;
+							}
+						}else if(pi.getCouleur()==Couleur.JAUNE ) {
+							if(pla.getChemin().indexOf(cdc)<=41 && de==1) {
+
+								return true;
+							}else {
+								return false;
+							}
+						}else if(pi.getCouleur()==Couleur.ROUGE ) {
+							if(pla.getChemin().indexOf(cdc)<=13 && de==1) {
+
+								return true;
+							}else {
+								return false;
+							}
+						}
+				}
+			}
+		}
+		return false;	
+		
+	}
+	
 	@Override
 	public Pion choisirPion(int de, Plateau pla) {
 
@@ -126,9 +165,13 @@ public class JoueurHumain extends Joueur {
 						}
 						if(depasseTour(pi,de,pla)) {
 							erreurTrajet=true;
-							System.out.println("aieaieaie");
 						}
-						if(erreurTrajet==false) {
+						
+						if(peutMonterEchelle(pi,de,pla)) {
+							choixPossible.add(pi);
+						}
+						
+						if (erreurTrajet==false){ 
 							choixPossible.add(pi);
 						}
 						
@@ -136,10 +179,12 @@ public class JoueurHumain extends Joueur {
 				}
 			}
 			
+			
+			
 			int caseApres;
 			for(ArrayList<CaseDEchelle> listeechelle : pla.getEchelles()) {
 				for(CaseDEchelle cde : listeechelle) {
-					caseApres = pla.getChemin().indexOf(cde)+1;
+					caseApres = listeechelle.indexOf(cde)+1;
 					for(Pion pio : cde.getChevaux()) {
 						if(pi==pio) {
 							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi)){

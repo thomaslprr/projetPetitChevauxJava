@@ -125,18 +125,26 @@ public class Partie  {
 			
 				
 				for(Case cases : p.getEcuries()) {
-	                if(cases.getChevaux().indexOf(pionABouger) != -1)
+	                if(cases.getChevaux().indexOf(pionABouger) != -1) {
 	                    caseArrivé = joueurCourant.getCaseDeDepart();
+	                }
 	            }
 				
 				for(Case cases : p.getChemin()) {
 	                if(cases.getChevaux().indexOf(pionABouger) != -1) {
 	                	if(p.getChemin().indexOf(cases)+resultatDe<=55) {
 	                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe);
-	                	}else {
+	                	}else if (p.getChemin().indexOf(cases)+resultatDe>55) {
 	                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56);
+	                	}else if(p.getChemin().indexOf(cases)==55 && pionABouger.getCouleur()==Couleur.BLEU) {
+	                		caseArrivé= p.getEchelles().get(3).get(0);
+	                	}else if(p.getChemin().indexOf(cases)==27 && pionABouger.getCouleur()==Couleur.VERT) {
+	                		caseArrivé= p.getEchelles().get(2).get(0);
+	                	}else if(p.getChemin().indexOf(cases)==41 && pionABouger.getCouleur()==Couleur.JAUNE) {
+	                		caseArrivé= p.getEchelles().get(0).get(0);
+	                	}else if(p.getChemin().indexOf(cases)==13 && pionABouger.getCouleur()==Couleur.ROUGE) {
+	                		caseArrivé= p.getEchelles().get(1).get(0);
 	                	}
-	                	mangerLesPions(caseArrivé);
 	                }
 	                    
 	            }
