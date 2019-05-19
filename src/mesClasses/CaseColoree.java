@@ -5,11 +5,14 @@ import mesExceptions.ConflitDeCouleurException;
 
 /**
  *  Classe Case Colorée 
- * @author thomaslapierre
+ * @author Thomas Lapierre
  * Cette classe hérite de Case
  */
 public abstract class CaseColoree extends Case {
-	private Couleur couleur;
+	/**
+	 * Ajout d'une couleur.
+	 */
+	private Couleur couleur; 
 	
 	
 	public CaseColoree(Couleur couleur) throws ConflitDeCouleurException {

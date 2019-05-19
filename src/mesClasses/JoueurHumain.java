@@ -7,16 +7,28 @@ import mesEnum.Couleur;
 /**
  * Classe pour les joueurs humains. 
  * Cette classe est faite pour les joueurs qui ne sont pas des bots.
- * @author thomaslapierre
+ * @author Thomas Lapierre
  *
  */
 public class JoueurHumain extends Joueur {
 
-	
+	/**
+	 * Constructeur d'un joueur humain
+	 * @param nom Nom du joueur
+	 * @param cou Couleur du joueur
+	 */
 	public JoueurHumain(String nom, Couleur cou) {
 		super(nom,cou);
 	}
 	
+	/**
+	 * Fonction rajoutée pour simplifier la récupération d'une position d'un pion
+	 * Il suffit seulement de lui passer le pion et le plateau en paramètre et cette fonction nous renvoie sa position.
+	 * Facultatif mais utile.  
+	 * @param pla Plateau de jeu
+	 * @param pion Pion où on souhaite connaître sa position.
+	 * @return la position sous forme d'entier
+	 */
 	public int savoirPosition(Plateau pla, Pion pion) {
 		for(CaseDeChemin cdc : pla.getChemin()) {
 			for(Pion pi : cdc.getChevaux()) {
@@ -27,7 +39,14 @@ public class JoueurHumain extends Joueur {
 		}
 		return 0;		
 	}
-		
+	
+	/**
+	 * Fonction permettant de connaître la position d'un cheval sur l'échelle. 
+	 * Elle sert à connaître l'indice d'échelle d'un pion.
+	 * @param pla Plateau de jeu 
+	 * @param pion Pion où on souhaite connaître sa position d'échelle
+	 * @return Position du pion (int) 
+	 */
 	public int savoirPositionEchelle(Plateau pla, Pion pion) {
 		for(ArrayList<CaseDEchelle> listeE : pla.getEchelles()) {
 			for(CaseDEchelle cde : listeE ) {
@@ -40,7 +59,15 @@ public class JoueurHumain extends Joueur {
 		return 0;		
 	}
 		
-		
+	/**
+	 * Méthode rajoutée mais très utile qui permet de savoir si le pion d'un joueur va dépasser le tour. 
+	 * Si c'est le cas la fonction renvoie true sinon false. Elle préviendra la fonction choisir pion qui ne proposera ainsi pas au joueur de choisir ce pion s'il voit qu'il dépassera le tour.
+	 * @param pi Pion du joueur
+	 * @param de Résultat du dé 
+	 * @param pla Plateau de jeu 
+	 * @return true OU false 
+	 * true si le pion dépasse le tour s'il joue, false s'il ne dépasse pas le tour.
+	 */
 	public boolean depasseTour(Pion pi, int de, Plateau pla) {
 		
 		int numFuturCase;
@@ -50,27 +77,27 @@ public class JoueurHumain extends Joueur {
 						numFuturCase = pla.getChemin().indexOf(cdc)+de;
 						
 						if(pi.getCouleur()==Couleur.BLEU ) {
-							if(numFuturCase>55 && pla.getChemin().indexOf(cdc)<=55) {
+							if(numFuturCase>55 && pla.getChemin().indexOf(cdc)<=55) { //si avant de jouer il est sur la case 55 ou moins et qu'après jouer il se trouve après 55.
 								return true;
 							}else {
 								return false;
 							}
 						}else if (pi.getCouleur()==Couleur.VERT ) {
-							if(numFuturCase>27 && pla.getChemin().indexOf(cdc)<=27) {
+							if(numFuturCase>27 && pla.getChemin().indexOf(cdc)<=27) { //si avant de jouer il est sur la case 27 ou moins et qu'après jouer il se trouve après 27.
 
 								return true;
 							}else {
 								return false;
 							}
 						}else if(pi.getCouleur()==Couleur.JAUNE ) {
-							if(numFuturCase>41 && pla.getChemin().indexOf(cdc)<=41) {
+							if(numFuturCase>41 && pla.getChemin().indexOf(cdc)<=41) { //si avant de jouer il est sur la case 41 ou moins et qu'après jouer il se trouve après 41.
 
 								return true;
 							}else {
 								return false;
 							}
 						}else if(pi.getCouleur()==Couleur.ROUGE ) {
-							if(numFuturCase>13 && pla.getChemin().indexOf(cdc)<=13) {
+							if(numFuturCase>13 && pla.getChemin().indexOf(cdc)<=13) { //si avant de jouer il est sur la case 13 ou moins et qu'après jouer il se trouve après 13.
 
 								return true;
 							}else {
@@ -83,13 +110,22 @@ public class JoueurHumain extends Joueur {
 		}
 		return false;
 	}
-
+	/**
+	 * Méthode rajoutée qui permet de savoir quand un pion peut monter dans l'échelle 
+	 * A chaque tour la méthode choisirPion vérifiera si un pion peut monter dans l'échelle ou non. 
+	 * Un pion peut monter s'il est à l'entrée (au pied) de l'échelle et que le dé est de 1.
+	 * @param pi Un pion 
+	 * @param de Résultat du dé 
+	 * @param pla Plateau de jeu 
+	 * @return - True si le pion peut monter dans l'échelle - False si le pion ne peut pas monter dans l'échelle
+	 * 
+	 */
 	public boolean peutMonterEchelle(Pion pi, int de, Plateau pla) {
 		for(CaseDeChemin cdc : pla.getChemin()) {
 			for(Pion pio : cdc.getChevaux()) {
 				if(pi==pio) {						
 						if(pi.getCouleur()==Couleur.BLEU ) {
-							if(pla.getChemin().indexOf(cdc)==55 && de==1) {
+							if(pla.getChemin().indexOf(cdc)==55 && de==1) { //on regarde si le pion est à l'entrée de son échelle et si le dé est de 1.
 								return true;
 							}else {
 								return false;
