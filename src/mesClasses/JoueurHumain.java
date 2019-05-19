@@ -130,8 +130,8 @@ public class JoueurHumain extends Joueur {
 							}else {
 								return false;
 							}
-						}else if (pi.getCouleur()==Couleur.VERT ) {
-							if(pla.getChemin().indexOf(cdc)==27 && de==1) {
+						}else if (pi.getCouleur()==Couleur.VERT ) { //on regarde pr chaque couleur car la case d'entrée d'échelle n'est pas la même en fonction de la couleur
+							if(pla.getChemin().indexOf(cdc)==27 && de==1) { 
 
 								return true;
 							}else {
@@ -159,19 +159,31 @@ public class JoueurHumain extends Joueur {
 		
 	}
 	
+	
+	/**
+	 * Plus grande méthode de la classe JoueurHumain et surement une des plus importante pour faire fonctionner et avancer le jeu.
+	 * Cette méthode va regarder pour les 4 pions lequel il peut déplacer. 
+	 * Pour ça il va regarder dans les écuries, dans les cases de chemin, dans les échelles. 
+	 * Il va regarder si le déplacement d'un pion est possible et après, si cela est possible, il l'ajoutera dans la liste des choix possibles de pion.
+	 * Le joueur finira par choisir parmis la liste possible des pions à déplacer celui qu'il désire déplacer.
+	 */
 	@Override
 	public Pion choisirPion(int de, Plateau pla) {
 
 		ArrayList<Pion> choixPossible = new ArrayList<Pion>();
 		int choix=-1;
-		
+		/**
+		 * On regarde toutes les possibilités pour chaque pion.
+		 */
 		for(Pion pi : this.getPions()) {
 			
-			
+			/**
+			 * on parcourt d'abord les écuries 
+			 */
 			for(CaseEcurie ce : pla.getEcuries()) {
 				for(Pion pio : ce.getChevaux()) {
 					if(pi==pio) {
-						if(de==6) {
+						if(de==6) { //si le dé = 6 et qu'il y a un pion dans l'écurie on l'ajoute aux possibiltés de choix, car ce pion peut être sorti ultérieurement.
 							choixPossible.add(pi);
 						}
 					}	
@@ -180,15 +192,18 @@ public class JoueurHumain extends Joueur {
 			
 			int numFuturCase;
 			boolean erreurTrajet=false;
+			/**
+			 * On parcourt à présent les cases de chemin
+			 */
 			for(CaseDeChemin cdc : pla.getChemin()) {
 				for(Pion pio : cdc.getChevaux()) {
 					if(pi==pio) {
 						for(int i=1;i<de;i++) {
 							numFuturCase = pla.getChemin().indexOf(cdc)+i;
 							if(numFuturCase > 55) {
-	                            numFuturCase -= 56;
+	                            numFuturCase -= 56; //permet de ne pas fausser tous les calcules lorsque la case dépasse 55 on la reconvertit pour faire un tour/ un cycle
 	                        }
-							if(pla.getChemin().get(numFuturCase).peutPasser(pi)==false) {
+							if(pla.getChemin().get(numFuturCase).peutPasser(pi)==false) { //on regarde s'il peut passer par toutes les cases qu'il empruntera pour se déplacer à la case d'arrivée
 								erreurTrajet=true;
 							}
 						}
@@ -196,18 +211,18 @@ public class JoueurHumain extends Joueur {
 						if(numFuturCase > 55) {
                             numFuturCase -= 56;
                         }
-						if(pla.getChemin().get(numFuturCase).peutSArreter(pi)==false) {
+						if(pla.getChemin().get(numFuturCase).peutSArreter(pi)==false) { // on regarde s'il pourra s'arrêter sur la case d'arrivée
 							erreurTrajet=true;
 						}
-						if(depasseTour(pi,de,pla)) {
+						if(depasseTour(pi,de,pla)) { // on vérifie qu'il ne dépasse pas d'un tour 
 							erreurTrajet=true;
 						}
 						
-						if(peutMonterEchelle(pi,de,pla)) {
+						if(peutMonterEchelle(pi,de,pla)) { // on regarde s'il peut monter ou non sur l'échelle
 							choixPossible.add(pi);
 						}
 						
-						if (erreurTrajet==false){ 
+						if (erreurTrajet==false){  //si une seule erreur est relevé lors du déplacement, on ne propose pas le choix de déplacement de ce pion, sinon oui.
 							choixPossible.add(pi);
 						}
 						
@@ -216,14 +231,21 @@ public class JoueurHumain extends Joueur {
 			}
 			
 			
-			
+			/**
+			 * On regarde à présent pour les cases d'échelle
+			 */
 			int caseApres;
 			for(ArrayList<CaseDEchelle> listeechelle : pla.getEchelles()) {
 				for(CaseDEchelle cde : listeechelle) {
 					caseApres = listeechelle.indexOf(cde)+1;
 					for(Pion pio : cde.getChevaux()) {
 						if(pi==pio) {
-							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi) && de<6){
+							/**
+							 * si le dé est égale à la valeur de la case d'après le joueur peut avvancer d'une case sur la grille d'échelle
+							 * on vérifie avant de l'ajouter à la liste des propositions qu'il n'y ait pas de pion sur cette future case
+							 * si le dé est de 6 on ne vérifie pas car il ne peut y avoir de pion sur une 7ème case.
+							 */
+							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi) && de<6){ 
 								choixPossible.add(pi);
 							}else if(savoirPositionEchelle(pla,pi)+1==de && de==6) {
 								choixPossible.add(pi);
@@ -246,7 +268,9 @@ public class JoueurHumain extends Joueur {
 		
 	
 		
-		
+		/**
+		 * On propose les différents pions aptent au déplacement.
+		 */
 		
 		if(choixPossible.size()>0) {
 			do {
@@ -254,6 +278,9 @@ public class JoueurHumain extends Joueur {
 				for(int i=0;i<choixPossible.size();i++) {
 					System.out.println(i+" : "+"Pion "+choixPossible.get(i).getId());
 				}
+				/**
+				 * Permet de récupérer toutes les erreurs de saisies possibles pour éviter un arrêt du programme.  
+				 */
 				try {	
 					choix=Partie.sc.nextInt();
 				}catch(java.util.InputMismatchException e) {
