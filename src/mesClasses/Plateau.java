@@ -111,7 +111,10 @@ public class Plateau {
 		
 		String[][] affichage = new String[15][15];
 		int val=0;
-		int val2=0;
+		int val1=0;
+		int val2 =0;
+		int val3 = 0;
+		int val4 = 0;
 		Couleur cou= Couleur.BLANC;
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
@@ -124,7 +127,7 @@ public class Plateau {
 							affichage[i][j]=Couleur.BLANC.getEcriture()+cou.getEcriture()+" "+caseChemin.get(val).getChevaux().size()+" "+ Couleur.BLANC.getEcriture();
 						}
 						else {
-							affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
+							affichage[i][j]=Couleur.BLANC.getCode()+"   "+ Couleur.BLANC.getCode();
 
 						}
 				}if(plateauValeur[i][j]==-1) {
@@ -135,35 +138,56 @@ public class Plateau {
 					affichage[i][j]=Couleur.ROUGE.getCode()+"   "+ Couleur.BLANC.getCode();
 				}else if(plateauValeur[i][j]==-4) {
 					affichage[i][j]=Couleur.VERT.getCode()+"   "+ Couleur.BLANC.getCode();
-				}else if(plateauValeur[i][j]>=75 &&plateauValeur[i][j]<=80 ) {
-					val=plateauValeur[i][j]-75;
-					if(listeEchelles.get(0).get(val2).getChevaux().size()>0) {
+				}
+				
+				
+				
+				else if(plateauValeur[i][j]>=75 &&plateauValeur[i][j]<=80 ) {
+					val4=plateauValeur[i][j]-75;
+					if(listeEchelles.get(0).get(val4).getChevaux().size()>0) {
 						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.JAUNE.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
+						affichage[i][j]=Couleur.JAUNE.getCode()+"   "+ Couleur.BLANC.getCode();
 					}	
-				}else if(plateauValeur[i][j]>=69 && plateauValeur[i][j]<=74) {
-					val=plateauValeur[i][j]-69;
+				}
+				
+				
+				
+				else if(plateauValeur[i][j]>=69 && plateauValeur[i][j]<=74) {
+					val2=plateauValeur[i][j]-69;
 					if(listeEchelles.get(2).get(val2).getChevaux().size()>0) {
 						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.VERT.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
+						affichage[i][j]=Couleur.VERT.getCode()+"   "+ Couleur.BLANC.getCode();
+
 					}
-				}else if(plateauValeur[i][j]>=63 && plateauValeur[i][j]<=68) {
-					val=plateauValeur[i][j]-63;
-					if(listeEchelles.get(1).get(val2).getChevaux().size()>0) {
+				}
+				
+				
+				else if(plateauValeur[i][j]>=63 && plateauValeur[i][j]<=68) {
+					val1=plateauValeur[i][j]-63;
+					if(listeEchelles.get(1).get(val1).getChevaux().size()>0) {
 						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.ROUGE.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
+						affichage[i][j]=Couleur.ROUGE.getCode()+"   "+ Couleur.BLANC.getCode();
+
 					}
-				}else if(plateauValeur[i][j]>=90 && plateauValeur[i][j]<=95) {
-					val=plateauValeur[i][j]-90;
-					if(listeEchelles.get(3).get(val2).getChevaux().size()>0) {
+				}
+				
+				
+				
+				else if(plateauValeur[i][j]>=90 && plateauValeur[i][j]<=95) {
+					val3=plateauValeur[i][j]-90;
+					if(listeEchelles.get(3).get(val3).getChevaux().size()>0) {
 						affichage[i][j]=Couleur.BLANC.getEcriture()+Couleur.BLEU.getEcriture()+" ♞ "+Couleur.BLANC.getCode();
 					}else {
-						affichage[i][j]=Couleur.BLANC.getCode()+" 0 "+ Couleur.BLANC.getCode();
+						affichage[i][j]=Couleur.BLEU.getCode()+"   "+ Couleur.BLANC.getCode();
 					}
-				}else if(plateauValeur[i][j]==1000) {
+				}
+				
+				
+				
+				else if(plateauValeur[i][j]==1000) {
 					affichage[i][j]= "FIN";
 				}
 				

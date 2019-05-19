@@ -16,7 +16,6 @@ public class Partie  {
 	public static final Scanner sc = new Scanner(System.in);
 	
 	public Partie() throws PasDeJoueursException  {
-		int reponse=-1;
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
 		System.out.println("Vous venez de lancer une partie, bonne partie.");
 		
