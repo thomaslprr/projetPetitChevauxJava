@@ -98,21 +98,36 @@ public class Plateau {
 	}
 	
 	
-	
+	/**
+	 * Permet de récupérer les 4 échelles 
+	 * @return les 4 échelles de couleurs différentes
+	 */
 	public ArrayList<ArrayList<CaseDEchelle>> getEchelles() {
 		return listeEchelles;
 	}
-
+	
+	/**
+	 * 
+	 * @return les cases d'écurie
+	 */
 	public ArrayList<CaseEcurie> getEcuries(){
 		return ecuries;
 	}
 	
+	/**
+	 * 
+	 * @return les cases de chemin
+	 */
 	public ArrayList<CaseDeChemin> getChemin(){
 		
 		return caseChemin;
 	}
 
-
+	/**
+	 * Fonction la plus importante pour l'aspect rendu visuel. 
+	 * C'est grâce à elle qu'on peut voir tout le jeu se réaliser et progresser. 
+	 * Elle permet de visualiser le plateau, les pions, les écuries, les échelles et les cases de chemins. 
+	 */
 	public void afficher() {
 	
 		int[][] plateauValeur = {
@@ -139,6 +154,9 @@ public class Plateau {
 		int val3 = 0;
 		int val4 = 0;
 		Couleur cou= Couleur.BLANC;
+		/**
+		 * On attribut les bonnes valeurs à chaque case du tableau 
+		 */
 		for(int i=0;i<15;i++) {
 			for(int j=0;j<15;j++) {
 				if(plateauValeur[i][j]>=1 && plateauValeur[i][j]<=56) {
@@ -218,7 +236,9 @@ public class Plateau {
 			}
 		}
 								
-
+		/**
+		 * On affiche les cases du tableau 
+		 */
 		for(int i=0;i<15;i++) {
 			System.out.println();
 			for(int j=0;j<15;j++) {
@@ -233,6 +253,12 @@ public class Plateau {
 		
 	}
 	
+	/**
+	 * Permet de déplacer le pion de sa case actuel vers la case passée en paramètre
+	 * @param p Pion 
+	 * @param c Case d'arrivé
+	 * @throws CasePleineException
+	 */
 	public void deplacerPionA(Pion p, Case c) throws CasePleineException {
 		
 		for(CaseDeChemin cc : caseChemin) {
@@ -259,6 +285,10 @@ public class Plateau {
 			for(CaseDEchelle cec : le) {
 				for(Pion pion : cec.getChevaux()) {
 					if(p==pion) {
+						/**
+						 * On retire le cheval de sa case actuelle
+						 * On ajoute le cheval sur sa nouvelle case
+						 */
 						cec.retirerCheval(p);
 						c.ajouteCheval(p);
 						return;
