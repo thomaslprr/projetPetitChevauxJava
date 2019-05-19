@@ -1,6 +1,7 @@
 package mesClasses;
 
 import mesEnum.Couleur;
+import mesExceptions.ConflitDeCouleurException;
 
 /**
  *  Classe pour les cases d'écurie. 
@@ -9,7 +10,7 @@ import mesEnum.Couleur;
  *
  */
 public class CaseEcurie extends CaseColoree {
-	public CaseEcurie(Couleur cou) {
+	public CaseEcurie(Couleur cou) throws ConflitDeCouleurException {
 		super(cou);
 	}
 

@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import mesEnum.Couleur;
+import mesExceptions.CasePleineException;
 import mesExceptions.PasDeJoueursException;
 
 public class Partie  {
@@ -169,7 +170,11 @@ public class Partie  {
 					
 					
 					
-					p.deplacerPionA(pionABouger, caseArrivé);
+					try {
+						p.deplacerPionA(pionABouger, caseArrivé);
+					} catch (CasePleineException e) {
+						System.out.println(e.getMessage());
+					}
 					
 					
 					p.afficher();

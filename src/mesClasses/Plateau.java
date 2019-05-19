@@ -3,6 +3,8 @@ package mesClasses;
 import java.util.ArrayList;
 
 import mesEnum.Couleur;
+import mesExceptions.CasePleineException;
+import mesExceptions.ConflitDeCouleurException;
 
 public class Plateau {
 	/**
@@ -34,32 +36,53 @@ public class Plateau {
 		/**
 		 * Création des 4 écuries que l'on ajoute à la liste des écuries
 		 */
-		ecuries.add(new CaseEcurie(Couleur.JAUNE));
-		ecuries.add(new CaseEcurie(Couleur.ROUGE));
-		ecuries.add(new CaseEcurie(Couleur.VERT));
-		ecuries.add(new CaseEcurie(Couleur.BLEU));
+		try {
+			ecuries.add(new CaseEcurie(Couleur.JAUNE));
+			ecuries.add(new CaseEcurie(Couleur.ROUGE));
+			ecuries.add(new CaseEcurie(Couleur.VERT));
+			ecuries.add(new CaseEcurie(Couleur.BLEU));
+		} catch (ConflitDeCouleurException e) {
+			System.out.println(e.getMessage());
+		}
+		
 		
 		/**
 		 * création des 6 cases d'échelles que l'on regroupe ensemble pour former une échelle d'une couleur spécifique
 		 */
 		
 		for(int i=0;i<6;i++) {
-			echelleRouge.add(new CaseDEchelle(Couleur.ROUGE));
+			try {
+				echelleRouge.add(new CaseDEchelle(Couleur.ROUGE));
+			} catch (ConflitDeCouleurException e) {
+				e.getMessage();
+			}
 		}
 		
 		
 		for(int i=0;i<6;i++) {
-			echelleJaune.add(new CaseDEchelle(Couleur.JAUNE));
+			try {
+				echelleJaune.add(new CaseDEchelle(Couleur.JAUNE));
+			} catch (ConflitDeCouleurException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		
 		
 		for(int i=0;i<6;i++) {
-			echelleBleu.add(new CaseDEchelle(Couleur.BLEU));
+			try {
+				echelleBleu.add(new CaseDEchelle(Couleur.BLEU));
+			} catch (ConflitDeCouleurException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		
 		
 		for(int i=0;i<6;i++) {
-			echelleVert.add(new CaseDEchelle(Couleur.VERT));
+			try {
+				echelleVert.add(new CaseDEchelle(Couleur.VERT));
+			} catch (ConflitDeCouleurException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		
 		/**
@@ -210,7 +233,7 @@ public class Plateau {
 		
 	}
 	
-	public void deplacerPionA(Pion p, Case c) {
+	public void deplacerPionA(Pion p, Case c) throws CasePleineException {
 		
 		for(CaseDeChemin cc : caseChemin) {
 			for(Pion pion : cc.getChevaux()) {

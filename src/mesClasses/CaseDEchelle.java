@@ -1,6 +1,7 @@
 package mesClasses;
 
 import mesEnum.Couleur;
+import mesExceptions.ConflitDeCouleurException;
 
 /**
  *  Classe pour les cases d'échelle
@@ -12,7 +13,7 @@ public class CaseDEchelle extends CaseColoree {
 	private static int compteurCaseDEchelle = 1 ;
 	private int numero; 
 	public boolean doitSArreter=false;
-	public CaseDEchelle(Couleur cou) {
+	public CaseDEchelle(Couleur cou) throws ConflitDeCouleurException {
 		super(cou);
 		if(compteurCaseDEchelle==6) {
 			numero=compteurCaseDEchelle;
