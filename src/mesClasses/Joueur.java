@@ -3,7 +3,6 @@ package mesClasses;
 import java.util.ArrayList;
 
 import mesEnum.Couleur;
-import mesExceptions.CasePleineException;
 /**
  * Classe Joueur
  * @author Thomas Lapierre

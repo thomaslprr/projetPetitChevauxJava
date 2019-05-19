@@ -2,8 +2,6 @@ package mesClasses;
 
 import java.util.ArrayList;
 
-import mesExceptions.CasePleineException;
-
 /**
  * Classe Case
  * @author Thomas Lapierre
