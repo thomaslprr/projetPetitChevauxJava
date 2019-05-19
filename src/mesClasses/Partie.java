@@ -147,7 +147,9 @@ public class Partie  {
 	}
 	
 	/**
-	 * 
+	 * Méthode qui permet de jouer un tour 
+	 * Elle lance le dé, annonce le joueur qui doit jouer, fait rejouer si la personne fait un 6 
+	 * Cette méthode déplace le pion choisi. C'est comme le main d'un tour d'une partie.
 	 */
 	public void jouerUnTour() {
 		
@@ -157,26 +159,44 @@ public class Partie  {
 			resultatDe = lanceDe();
 			System.out.println("Résultat du dé : "+ resultatDe);
 			sc.nextLine();
-			
+			/**
+			 * Va exécuter la méthode choisirPion 
+			 */
 			Pion pionABouger = joueurCourant.choisirPion(resultatDe, p);
 			
 			Case caseArrivé = null;
 			
-			
+			/**
+			 * le but de cette fonction va être de chercher la case d'arrivé pour ainsi déplacer le pion choisi sur cette case d'arrivé
+			 * on ne s'occupe pas ici de savoir si c'est possible ou non, on le fait juste.
+			 */
 			if(pionABouger != null ) {
 				
-					
+					/**
+					 * On parcourt les cases d'écurie
+					 */
 					for(Case cases : p.getEcuries()) {
 		                if(cases.getChevaux().indexOf(pionABouger) != -1) {
+		                	/**
+		                	 * la case d'arrivé est égale à la case de départ du pion défini auparavant
+		                	 */
 		                    caseArrivé = joueurCourant.getCaseDeDepart();
+		                    /**
+		                     * si la case d'arrivé contient des pions qui ne sont pas de la couleur du pion qui sort, il les mange
+		                     */
 		                    if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
 			                	mangerLesPions(caseArrivé);
 		                    }
 		                }
 		            }
-					
+					/**
+					 * On parcourt les cases de chemin 
+					 */
 					for(Case cases : p.getChemin()) {
 		                if(cases.getChevaux().indexOf(pionABouger) != -1) {
+		                	/**
+		                	 * si le pion est sur une case d'entrée d'échelle, sa case d'arrivée est la première case de son échelle
+		                	 */
 		                	if(p.getChemin().indexOf(cases)==55 && pionABouger.getCouleur()==Couleur.BLEU) {
 		                		caseArrivé= p.getEchelles().get(3).get(0);
 		                	}else if(p.getChemin().indexOf(cases)==27 && pionABouger.getCouleur()==Couleur.VERT) {
@@ -185,13 +205,13 @@ public class Partie  {
 		                		caseArrivé= p.getEchelles().get(0).get(0);
 		                	}else if(p.getChemin().indexOf(cases)==13 && pionABouger.getCouleur()==Couleur.ROUGE) {
 		                		caseArrivé= p.getEchelles().get(1).get(0);
-		                	}else if(p.getChemin().indexOf(cases)+resultatDe<=55) {
-		                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe);
+		                	}else if(p.getChemin().indexOf(cases)+resultatDe<=55) { 
+		                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe); // la case d'arrivée est la case actuelle + le dé
 		                	}else if (p.getChemin().indexOf(cases)+resultatDe>55) {
-		                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56);
+		                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56); // si la case actuelle + le dé est plus grand que le tour d'un plateau, la case d'arrivé est égale à la case actuelle + le dé moins la taille d'un tour de plateau 
 		                	}
 		                	if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
-				                	mangerLesPions(caseArrivé);
+				                	mangerLesPions(caseArrivé); //on pense à manger les pions sur la case d'arrivée
 			                }
 		                }
 		                    
@@ -200,21 +220,25 @@ public class Partie  {
 					for(ArrayList<CaseDEchelle> le : p.getEchelles()) {
 						for(CaseDEchelle cec : le) {
 							if(cec.getChevaux().indexOf(pionABouger) != -1) {
-								caseArrivé=le.get((cec.getNumeroCaseEchelle()));
+								caseArrivé=le.get((cec.getNumeroCaseEchelle())); //on avance de 1 sur l'échelle
 							}
 						}
 					}
 					
 					
 					
-					
+					/**
+					 * On essaye de déplacer le pion si une erreur se produit on affiche le message d'erreur mais le programme continue
+					 */
 					try {
-						p.deplacerPionA(pionABouger, caseArrivé);
+						p.deplacerPionA(pionABouger, caseArrivé);  // déplacement du pion
 					} catch (CasePleineException e) {
 						System.out.println(e.getMessage());
 					}
 					
-					
+					/**
+					 * On affiche le plateau
+					 */
 					p.afficher();
 					
 					cpt++;
@@ -228,17 +252,25 @@ public class Partie  {
 			
 			
 		}while(resultatDe==6 && cpt<2);
-		
+		/**
+		 * Boucle qui permet de faire jouer 2 fois l'utilisateur s'il fait un 6 
+		 */
 		
 		
 		
 		sc.nextLine();
-		
+		/**
+		 * On passe au joueur suivant
+		 */
 		setJoueurCourrant(joueurCourant);
 		System.out.println("C'est au tour de "+ joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+"\033[0m de jouer");
 		sc.nextLine();
 	}
-	
+	/**
+	 * Cette fonction permet d'arrêter le programme quand le jeu est fini. 
+	 * Celui-ci est terminé lorsque les 4 chevaux d'un joueur sont sur la grille d'échelle 
+	 * @return true si un des quatre joueurs a terminé sinon false
+	 */
 	public boolean estPartieTermine() {
 		
 		for(ArrayList<CaseDEchelle> echelle : p.getEchelles())	{
