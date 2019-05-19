@@ -221,7 +221,7 @@ public class JoueurHumain extends Joueur {
 				try {	
 					choix=Partie.sc.nextInt();
 				}catch(java.util.InputMismatchException e) {
-					System.out.println("Veuillez saisir un chiffre parmis ceux proposé(s) ci-dessus. Tout autre saisie ne pourra fonctionner. ");
+					System.out.println("Veuillez saisir un chiffre parmis ceux proposé(s). Tout autre saisie ne pourra fonctionner. ");
 					Partie.sc.nextLine();
 					choix=-1;
 				}
