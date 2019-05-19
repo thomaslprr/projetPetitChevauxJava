@@ -8,13 +8,24 @@ import mesEnum.Couleur;
 import mesExceptions.CasePleineException;
 import mesExceptions.PasDeJoueursException;
 
+/**
+ * 
+ * @author Thomas Lapierre & Benjamin Picot
+ *
+ */
+
 public class Partie  {
 	private Random de= new Random();
 	private ArrayList<JoueurHumain> joueurs = new ArrayList<JoueurHumain>();
 	private Plateau p;
 	private Joueur joueurCourant ;
 	public static final Scanner sc = new Scanner(System.in);
-	
+	 /**
+	  * Création d'une partie 
+	  * On initialise les 4 joueurs 
+	  * On initialise le plateau 
+	  * @throws PasDeJoueursException
+	  */
 	public Partie() throws PasDeJoueursException  {
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
 		System.out.println("Vous venez de lancer une partie, bonne partie.");
@@ -26,6 +37,11 @@ public class Partie  {
 		initialiserPlateau();		
 	}
 	
+	/**
+	 * Méthode permettant d'initialiser les joueurs 
+	 * @param nbreJoueur Nombre de joueur à initialiser
+	 * @throws PasDeJoueursException
+	 */
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
 		if(nbreJoueur == 0) {
 			throw new PasDeJoueursException();
@@ -36,12 +52,17 @@ public class Partie  {
 			String nomChoisi;
 			Couleur couleurChoisi;
 			ArrayList<Couleur> couleursDisponible = new ArrayList<Couleur>();
+			/**
+			 * on propose les 4 couleurs possibles
+			 */
 			couleursDisponible.add(Couleur.JAUNE);
 			couleursDisponible.add(Couleur.BLEU);
 			couleursDisponible.add(Couleur.ROUGE);
 			couleursDisponible.add(Couleur.VERT);
 			 
-				
+			/**
+			 * Pour chaque joueur, l'utilisateur sélectionne un nom qui sera attribué à une couleur
+			 */
 			for(int j=0;j<nbreJoueur;j++) {
 				System.out.println("Quel est le prénom du joueur "+(j+1)+" pour la couleur "+ couleursDisponible.get(0));
 				nomChoisi = sc.nextLine();
@@ -55,28 +76,38 @@ public class Partie  {
 				joueurs.add(new JoueurHumain(nomChoisi ,couleurChoisi));
 				
 			}
-			
+			/**
+			 * Récapitulatif de la couleur que possède chaque joueur
+			 */
 			for(Joueur jh : joueurs) {
 				System.out.println(jh.getNom() + " a pour couleur "+ jh.getCouleur().getNom());
 			}
 			
 		
 		}
-		
+		/**
+		 * Indication de quel joueur commence
+		 */
 		this.joueurCommence();
         System.out.println(joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+" commence à jouer !\033[0m");
 		
 		
 	}
 	
-	
+	/**
+	 * Méthode permettant de déterminer aléatoirement quel joueur commence
+	 */
 	public void joueurCommence() {
 		int nbreAleatoire = (int)(Math.random() * ((3) + 1));
 		this.joueurCourant=joueurs.get(nbreAleatoire);
 	}
 	
 	
-	
+	/**
+	 * Méthode permettant d'initialiser le plateau 
+	 * On créé d'abord le plateau, ensuite on attribut la case de départ que chaque joueur aura. 
+	 * 
+	 */
 	public void initialiserPlateau() {
 		p = new Plateau();
 		for(int i=0;i<joueurs.size();i++) {
@@ -92,7 +123,7 @@ public class Partie  {
 				j.setCaseDeDepart(p.getChemin().get(42));
 				break;
 			case VERT:
-				j.setCaseDeDepart(p.getChemin().get(28));
+				j.setCaseDeDepart(p.getChemin().get(28)); //les pions du joueurs vert seront à la case 28 lorsqu'ils sortiront de l'écurie
 				break;
 			case BLEU:
 				j.setCaseDeDepart(p.getChemin().get(0));
@@ -107,10 +138,17 @@ public class Partie  {
 		
 	}
 	
+	/**
+	 * Permet de simuler un lancer de dé 
+	 * @return Un nombre aléatoire compris entre 1 et 6.
+	 */
 	public int lanceDe() {
 		return de.nextInt(6) + 1;
 	}
 	
+	/**
+	 * 
+	 */
 	public void jouerUnTour() {
 		
 		int cpt=0;
@@ -223,36 +261,63 @@ public class Partie  {
 		}
 		return false;
 	}
-	
+	/**
+	 * Connaître le joueur courrant
+	 * @return Joueur actuel
+	 */
 	public Joueur getJoueurCourrant() {
 		
 		return joueurCourant;
 	}
-	
+	/**
+	 * Permet de changer de joueur courant 
+	 * Le joueur courant est celui d'après dans l'ordre. 
+	 * @param j Prend en paramètre le joueur actuel pour ainsi après un calcul changer le joueur courrant en celui d'apères.
+	 */
 	public void setJoueurCourrant(Joueur j) {
 		int numJ = joueurs.indexOf(j);
 		numJ = (numJ+1)%4;
 		this.joueurCourant = joueurs.get(numJ);
 	}
 	
-	
+	/**
+	 * 
+	 * @return le plateau de la partie
+	 */
 	public Plateau getPlateau() {
 		return p;
 	}
 	
+	/**
+	 * Permet de récupérer la liste des joueurs d'une partie
+	 * @return Les joueurs de la partie
+	 */
 	public ArrayList<JoueurHumain> getJoueur(){
 		return joueurs;
 	}
 	
+	/**
+	 * Fonction qui permet de manger un pion
+	 * @param c Une case
+	 */
 	public void mangerLesPions(Case c) {
 		for(Pion pi : c.getChevaux()) {
 			for(CaseEcurie ce : p.getEcuries()) {
 				if(pi.getCouleur()==ce.getCouleur()) {
+					/**
+					 * le cheval est ajouté à l'écurie
+					 */
 					ce.ajouteCheval(pi);
 				}
 			}
 		}
+		/**
+		 * le cheval est supprimé de la case 
+		 */
 		c.getChevaux().clear();
+		/**
+		 * On indique aux joueurs qu'un pion a été mangé
+		 */
 		System.out.println("Un pion a été mangé.");
 	
 	}
