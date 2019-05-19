@@ -157,7 +157,8 @@ public class Partie  {
 				for(ArrayList<CaseDEchelle> le : p.getEchelles()) {
 					for(CaseDEchelle cec : le) {
 						if(cec.getChevaux().indexOf(pionABouger) != -1) {
-							caseArrivé= le.get(cec.getChevaux().indexOf(pionABouger)+1);
+							caseArrivé=le.get((cec.getNumeroCaseEchelle()));
+							System.out.println("WESHHHHHH   "+cec.getNumeroCaseEchelle()+"   WHESSSSS");
 						}
 					}
 				}
@@ -244,7 +245,7 @@ public class Partie  {
 			}
 		}
 		c.getChevaux().clear();
-		
+		System.out.println("Un pion a été mangé.");
 	
 	}
 }

@@ -187,7 +187,9 @@ public class JoueurHumain extends Joueur {
 					caseApres = listeechelle.indexOf(cde)+1;
 					for(Pion pio : cde.getChevaux()) {
 						if(pi==pio) {
-							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi)){
+							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi) && de<6){
+								choixPossible.add(pi);
+							}else if(savoirPositionEchelle(pla,pi)+1==de && de==6) {
 								choixPossible.add(pi);
 							}
 						}
@@ -211,11 +213,13 @@ public class JoueurHumain extends Joueur {
 		
 		
 		if(choixPossible.size()>0) {
-			System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
-			for(int i=0;i<choixPossible.size();i++) {
-				System.out.println(choixPossible.get(i).getId()+" : "+"Pion "+choixPossible.get(i).getId());
-			}
-			choix=Partie.sc.nextInt();
+			do {
+				System.out.println("Quel pion voulez-vous déplacer parmis les suivants ?");
+				for(int i=0;i<choixPossible.size();i++) {
+					System.out.println(choixPossible.get(i).getId()+" : "+"Pion "+choixPossible.get(i).getId());
+				}
+				choix=Partie.sc.nextInt();
+			}while(choix<1 || choix>4);
 			return this.getPions().get(choix-1);
 		}else {
 			return null;
