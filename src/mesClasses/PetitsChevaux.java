@@ -21,6 +21,7 @@ public class PetitsChevaux {
 			do {
 				p1.jouerUnTour();
 			}while(p1.estPartieTermine()==false);
+		System.out.println("La partie est terminée !");
 	}
 
 }

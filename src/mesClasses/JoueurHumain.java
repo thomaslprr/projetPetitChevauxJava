@@ -218,7 +218,13 @@ public class JoueurHumain extends Joueur {
 				for(int i=0;i<choixPossible.size();i++) {
 					System.out.println(choixPossible.get(i).getId()+" : "+"Pion "+choixPossible.get(i).getId());
 				}
+			try {	
 				choix=Partie.sc.nextInt();
+			}catch(java.util.InputMismatchException e) {
+				System.out.println("Veuillez saisir un chiffre parmis ceux proposé(s) ci-dessus. Tout autre saisie ne pourra fonctionner. ");
+				Partie.sc.nextLine();
+				choix=12;
+			}
 			}while(choix<1 || choix>4);
 			return this.getPions().get(choix-1);
 		}else {

@@ -112,76 +112,80 @@ public class Partie  {
 	}
 	
 	public void jouerUnTour() {
-		int resultatDe = lanceDe();
-		System.out.println("Résultat du dé : "+ resultatDe);
-		sc.nextLine();
-		Pion pionABouger = joueurCourant.choisirPion(resultatDe, p);
 		
-		Case caseArrivé = null;
-		
-		
-		if(pionABouger != null ) {
+		int cpt=0;
+		int resultatDe=0;
+		do {
+			resultatDe = lanceDe();
+			System.out.println("Résultat du dé : "+ resultatDe);
+			sc.nextLine();
 			
+			Pion pionABouger = joueurCourant.choisirPion(resultatDe, p);
+			
+			Case caseArrivé = null;
+			
+			
+			if(pionABouger != null ) {
 				
-				for(Case cases : p.getEcuries()) {
-	                if(cases.getChevaux().indexOf(pionABouger) != -1) {
-	                    caseArrivé = joueurCourant.getCaseDeDepart();
-	                    if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
-		                	mangerLesPions(caseArrivé);
-	                    }
-	                }
-	            }
-				
-				for(Case cases : p.getChemin()) {
-	                if(cases.getChevaux().indexOf(pionABouger) != -1) {
-	                	if(p.getChemin().indexOf(cases)==55 && pionABouger.getCouleur()==Couleur.BLEU) {
-	                		caseArrivé= p.getEchelles().get(3).get(0);
-	                	}else if(p.getChemin().indexOf(cases)==27 && pionABouger.getCouleur()==Couleur.VERT) {
-	                		caseArrivé= p.getEchelles().get(2).get(0);
-	                	}else if(p.getChemin().indexOf(cases)==41 && pionABouger.getCouleur()==Couleur.JAUNE) {
-	                		caseArrivé= p.getEchelles().get(0).get(0);
-	                	}else if(p.getChemin().indexOf(cases)==13 && pionABouger.getCouleur()==Couleur.ROUGE) {
-	                		caseArrivé= p.getEchelles().get(1).get(0);
-	                	}else if(p.getChemin().indexOf(cases)+resultatDe<=55) {
-	                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe);
-	                	}else if (p.getChemin().indexOf(cases)+resultatDe>55) {
-	                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56);
-	                	}
-	                	if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
+					
+					for(Case cases : p.getEcuries()) {
+		                if(cases.getChevaux().indexOf(pionABouger) != -1) {
+		                    caseArrivé = joueurCourant.getCaseDeDepart();
+		                    if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
 			                	mangerLesPions(caseArrivé);
+		                    }
 		                }
-	                }
-	                    
-	            }
-				
-				for(ArrayList<CaseDEchelle> le : p.getEchelles()) {
-					for(CaseDEchelle cec : le) {
-						if(cec.getChevaux().indexOf(pionABouger) != -1) {
-							caseArrivé=le.get((cec.getNumeroCaseEchelle()));
-							System.out.println("WESHHHHHH   "+cec.getNumeroCaseEchelle()+"   WHESSSSS");
+		            }
+					
+					for(Case cases : p.getChemin()) {
+		                if(cases.getChevaux().indexOf(pionABouger) != -1) {
+		                	if(p.getChemin().indexOf(cases)==55 && pionABouger.getCouleur()==Couleur.BLEU) {
+		                		caseArrivé= p.getEchelles().get(3).get(0);
+		                	}else if(p.getChemin().indexOf(cases)==27 && pionABouger.getCouleur()==Couleur.VERT) {
+		                		caseArrivé= p.getEchelles().get(2).get(0);
+		                	}else if(p.getChemin().indexOf(cases)==41 && pionABouger.getCouleur()==Couleur.JAUNE) {
+		                		caseArrivé= p.getEchelles().get(0).get(0);
+		                	}else if(p.getChemin().indexOf(cases)==13 && pionABouger.getCouleur()==Couleur.ROUGE) {
+		                		caseArrivé= p.getEchelles().get(1).get(0);
+		                	}else if(p.getChemin().indexOf(cases)+resultatDe<=55) {
+		                		caseArrivé = p.getChemin().get(p.getChemin().indexOf(cases)+resultatDe);
+		                	}else if (p.getChemin().indexOf(cases)+resultatDe>55) {
+		                		caseArrivé = p.getChemin().get((p.getChemin().indexOf(cases)+resultatDe)-56);
+		                	}
+		                	if(caseArrivé.getChevaux().size()>0 && caseArrivé.getChevaux().get(0).getCouleur()!=joueurCourant.getCouleur()) {
+				                	mangerLesPions(caseArrivé);
+			                }
+		                }
+		                    
+		            }
+					
+					for(ArrayList<CaseDEchelle> le : p.getEchelles()) {
+						for(CaseDEchelle cec : le) {
+							if(cec.getChevaux().indexOf(pionABouger) != -1) {
+								caseArrivé=le.get((cec.getNumeroCaseEchelle()));
+							}
 						}
 					}
+					
+					
+					
+					
+					p.deplacerPionA(pionABouger, caseArrivé);
+					
+					
+					p.afficher();
+					
+					cpt++;
+					
+					
+					
+				}else {
+					System.out.println("Vous ne pouvez pas déplacer de pion.");
 				}
-				
-				
-				
-				
-				p.deplacerPionA(pionABouger, caseArrivé);
-				
-				
-				p.afficher();
-				
-				
-				
-				
-				
-			}else {
-				System.out.println("Vous ne pouvez pas déplacer de pion.");
-			}
-		
-		
-		
-		
+			
+			
+			
+		}while(resultatDe==6 && cpt<2);
 		
 		
 		
