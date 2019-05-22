@@ -10,7 +10,11 @@ public enum Couleur {
     VERT ("Vert","\033[1;42m","\033[34;32m"),
     BLEU ("Bleu","\033[1;46m","\033[34;36m"),
     BLANC ("Blanc","\033[0m","\033[00m");
-
+	/**
+	 * La couleur possède un nom
+	 * Elle possède un code qui correspond au code couleur du shell pour le fond 
+	 * Elle possède une écriture qui correspond au code couleur du shell pour l'écriture
+	 */
    private String nom;
    private String code;
    private String ecriture;

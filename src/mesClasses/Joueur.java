@@ -51,7 +51,7 @@ public abstract class Joueur {
 	
 	/**
 	 * Permet de changer le nom du joueur, en cours de partie par exemple. (pas utilisée mais peut servir)
-	 * @param nomJoueur
+	 * @param nomJoueur nouveau nom du joueur
 	 */
 	public void setNom(String nomJoueur) {
 		this.nomJoueur = nomJoueur;
@@ -67,7 +67,7 @@ public abstract class Joueur {
 
 	/**
 	 * Permet de changer la case de départ d'un joueur.
-	 * @param caseJoueur 
+	 * @param caseJoueur nouvelle case joueur
 	 */
 	public void setCaseDeDepart(Case caseJoueur) {
 		this.caseJoueurDepart = caseJoueur;
@@ -83,7 +83,7 @@ public abstract class Joueur {
 	
 	/**
 	 * Permet d'ajouter un pion à un joueur.
-	 * @param pion
+	 * @param pion pion à ajouter 
 	 */
 	public void ajouterPion(Pion pion) {
 		pions.add(pion);

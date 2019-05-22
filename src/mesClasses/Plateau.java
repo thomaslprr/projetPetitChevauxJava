@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import mesEnum.Couleur;
 import mesExceptions.CasePleineException;
 import mesExceptions.ConflitDeCouleurException;
-
+/**
+ * Classe plateau qui gère principalement le plateau et son affichage
+ * @author Thomas Lapierre et Benjamin Picot
+ *
+ */
 public class Plateau {
 	/**
 	 * Déclaration et création des différentes ArrayList
@@ -257,7 +261,7 @@ public class Plateau {
 	 * Permet de déplacer le pion de sa case actuel vers la case passée en paramètre
 	 * @param p Pion 
 	 * @param c Case d'arrivé
-	 * @throws CasePleineException
+	 * @throws CasePleineException exception si case pleine
 	 */
 	public void deplacerPionA(Pion p, Case c) throws CasePleineException {
 		

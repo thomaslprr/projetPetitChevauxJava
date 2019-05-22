@@ -37,7 +37,7 @@ public abstract class Case {
 	
 	/**
 	 * Permet d'ajouter un pion sur une case
-	 * @param pion
+	 * @param pion pion 
 	 */
 	public void ajouteCheval(Pion pion) {
 		pionCase.add(pion);
@@ -45,7 +45,7 @@ public abstract class Case {
 	
 	/**
 	 * Permet de retirer un pion d'une case
-	 * @param pion
+	 * @param pion pion 
 	 */
 	public void retirerCheval(Pion pion) {
 		pionCase.remove(pion);
@@ -71,7 +71,7 @@ public abstract class Case {
 	
 	/**
 	 * Permet de déterminer si un pion passer en paramètre peut s'arrêter sur cette case ou non.
-	 * @param pion
+	 * @param pion pion
 	 * @return true OU false
 	 */
 	public abstract boolean peutSArreter(Pion pion);

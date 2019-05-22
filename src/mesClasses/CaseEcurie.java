@@ -12,8 +12,8 @@ import mesExceptions.ConflitDeCouleurException;
 public class CaseEcurie extends CaseColoree {
 	/**
 	 * Constructeur d'une case d'écurie
-	 * @param cou
-	 * @throws ConflitDeCouleurException
+	 * @param cou couleur
+	 * @throws ConflitDeCouleurException exception de couleur
 	 */
 	public CaseEcurie(Couleur cou) throws ConflitDeCouleurException {
 		super(cou);

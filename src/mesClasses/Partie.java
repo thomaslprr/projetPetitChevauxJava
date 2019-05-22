@@ -10,7 +10,7 @@ import mesExceptions.PasDeJoueursException;
 
 /**
  * 
- * @author Thomas Lapierre & Benjamin Picot
+ * @author Thomas Lapierre et Benjamin Picot
  *
  */
 
@@ -24,7 +24,7 @@ public class Partie  {
 	  * Création d'une partie 
 	  * On initialise les 4 joueurs 
 	  * On initialise le plateau 
-	  * @throws PasDeJoueursException
+	  * @throws PasDeJoueursException exception si pas de joueur à initialiser
 	  */
 	public Partie() throws PasDeJoueursException  {
 		System.out.println("||||| Bienvenue sur le jeu des petits chevaux |||||");
@@ -40,7 +40,7 @@ public class Partie  {
 	/**
 	 * Méthode permettant d'initialiser les joueurs 
 	 * @param nbreJoueur Nombre de joueur à initialiser
-	 * @throws PasDeJoueursException
+	 * @throws PasDeJoueursException exception quand pas de joueur
 	 */
 	public void initialiserJoueurs(int nbreJoueur) throws PasDeJoueursException {
 		if(nbreJoueur == 0) {
