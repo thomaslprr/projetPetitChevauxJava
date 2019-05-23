@@ -247,7 +247,7 @@ public class JoueurHumain extends Joueur {
 							 */
 							if(savoirPositionEchelle(pla,pi)+1==de && listeechelle.get(caseApres).peutSArreter(pi) && de<6){ 
 								choixPossible.add(pi);
-							}else if(savoirPositionEchelle(pla,pi)+1==de && de==6) {
+							}else if(savoirPositionEchelle(pla,pi)+1==de && de==6 && listeechelle.get(caseApres).getChevaux().size()==0) {
 								choixPossible.add(pi);
 							}
 						}

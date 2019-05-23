@@ -262,9 +262,13 @@ public class Partie  {
 		/**
 		 * On passe au joueur suivant
 		 */
-		setJoueurCourrant(joueurCourant);
-		System.out.println("C'est au tour de "+ joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+"\033[0m de jouer");
+		if(this.estPartieTermine()!= true) {
+			setJoueurCourrant(joueurCourant);
+			System.out.println("C'est au tour de "+ joueurCourant.getCouleur().getCode()+joueurCourant.getNom()+"\033[0m de jouer");
+		}
+		
 		sc.nextLine();
+
 	}
 	/**
 	 * Cette fonction permet d'arrêter le programme quand le jeu est fini. 
